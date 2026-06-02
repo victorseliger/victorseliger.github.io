@@ -80,12 +80,13 @@
 
   /* ---- Trajetória: tile 3D ---- */
   function trajTile(c, i) {
+    var inner = c.logo
+      ? '<img class="logo3d__img" src="' + esc(c.logo) + '" alt="' + esc(c.name) + '" loading="lazy" decoding="async" />'
+      : '<span class="logo3d__mark">' + esc(c.mark || c.name.charAt(0)) + "</span>";
     return (
-      '<button class="logo-tile" type="button" role="tab" data-traj-index="' + i + '" aria-selected="false">' +
+      '<button class="logo-tile" type="button" role="tab" data-traj-index="' + i + '" aria-selected="false" style="--accent:' + esc(c.accent || "#0071e3") + '">' +
       '<span class="logo-tile__inner">' +
-      '<span class="logo3d" style="--accent:' + esc(c.accent || "#2f6bff") + '">' +
-      '<span class="logo3d__mark">' + esc(c.mark || c.name.charAt(0)) + "</span>" +
-      "</span>" +
+      '<span class="logo3d">' + inner + "</span>" +
       '<span class="logo-tile__name">' + esc(c.name) + "</span>" +
       '<span class="logo-tile__period">' + esc(c.period) + "</span>" +
       "</span>" +

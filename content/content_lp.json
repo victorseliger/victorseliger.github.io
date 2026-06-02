@@ -56,8 +56,8 @@
         {
           "id": "dattos",
           "name": "DATTOS",
-          "mark": "D",
-          "accent": "#2f6bff",
+          "logo": "assets/logo-dattos.svg",
+          "accent": "#091F68",
           "period": "Set 2024 — Atual",
           "role": "Senior Implementation Analyst — Data & AI Automation",
           "manifesto": "Conduzo a implantação ponta-a-ponta de projetos de conciliação financeira regulada para clientes enterprise (automotivo, financeiro, energia, logística).",
@@ -72,8 +72,8 @@
         {
           "id": "itau",
           "name": "ITAÚ UNIBANCO",
-          "mark": "I",
-          "accent": "#f47a20",
+          "logo": "assets/logo-itau.svg",
+          "accent": "#EC7000",
           "period": "2015 — 2024 · 9 anos · 3 cargos",
           "sub_roles": [
             {
@@ -355,8 +355,8 @@
         {
           "id": "dattos",
           "name": "DATTOS",
-          "mark": "D",
-          "accent": "#2f6bff",
+          "logo": "assets/logo-dattos.svg",
+          "accent": "#091F68",
           "period": "Sep 2024 — Present",
           "role": "Senior Implementation Analyst — Data & AI Automation",
           "manifesto": "I lead the end-to-end implementation of regulated financial reconciliation projects for enterprise clients (automotive, financial, energy, logistics).",
@@ -371,8 +371,8 @@
         {
           "id": "itau",
           "name": "ITAÚ UNIBANCO",
-          "mark": "I",
-          "accent": "#f47a20",
+          "logo": "assets/logo-itau.svg",
+          "accent": "#EC7000",
           "period": "2015 — 2024 · 9 years · 3 roles",
           "sub_roles": [
             {
