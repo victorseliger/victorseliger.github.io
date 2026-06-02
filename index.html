@@ -85,17 +85,21 @@
           <span class="line-1" data-bind="hero.promise_line1"></span>
           <span class="line-2" data-bind="hero.promise_line2"></span>
         </h1>
-        <hr class="hero__rule reveal" />
-        <p class="hero__name reveal" id="hero-name" data-bind="hero.name"></p>
-        <p class="hero__role reveal" data-bind="hero.role"></p>
-        <p class="hero__availability reveal">
+        <hr class="hero__rule reveal" data-delay="1" />
+        <p class="hero__name reveal" data-delay="1" id="hero-name" data-bind="hero.name"></p>
+        <p class="hero__role reveal" data-delay="2" data-bind="hero.role"></p>
+        <p class="hero__availability reveal" data-delay="3">
           <span data-bind="hero.availability_line1"></span>
           <span data-bind="hero.availability_line2"></span>
         </p>
-        <div class="hero__ctas reveal">
+        <div class="hero__ctas reveal" data-delay="4">
           <a class="cta cta--primary" data-cta="inmail" target="_blank" rel="noopener" href="#" data-bind="hero.cta_primary_label"></a>
           <a class="cta cta--secondary" data-cta="whatsapp" target="_blank" rel="noopener" href="#" data-bind="hero.cta_secondary_label"></a>
         </div>
+      </div>
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>scroll</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
       </div>
     </section>
 
@@ -147,24 +151,26 @@
     </section>
 
     <!-- ====================== SEÇÃO 4 — O que faço ====================== -->
-    <section class="section" aria-labelledby="what-title">
+    <section class="section section--subtle" aria-labelledby="what-title">
       <div class="container">
         <h2 class="section__header reveal" id="what-title" data-bind="what_i_do.section_title"></h2>
         <hr class="section__rule reveal" />
         <p class="what__headline reveal" data-bind="what_i_do.headline"></p>
-        <div class="what__block reveal">
-          <p class="what__block-label" data-bind="what_i_do.expertise_label"></p>
-          <p class="what__block-text" data-bind="what_i_do.expertise_text"></p>
-        </div>
-        <div class="what__block reveal">
-          <p class="what__block-label" data-bind="what_i_do.edge_label"></p>
-          <p class="what__block-text" data-bind="what_i_do.edge_text"></p>
+        <div class="what__grid">
+          <div class="what__block reveal">
+            <p class="what__block-label" data-bind="what_i_do.expertise_label"></p>
+            <p class="what__block-text" data-bind="what_i_do.expertise_text"></p>
+          </div>
+          <div class="what__block reveal" data-delay="1">
+            <p class="what__block-label" data-bind="what_i_do.edge_label"></p>
+            <p class="what__block-text" data-bind="what_i_do.edge_text"></p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ====================== SEÇÃO 5 — Como me destaco com IA ====================== -->
-    <section class="section" aria-labelledby="ai-title">
+    <section class="section section--dark" aria-labelledby="ai-title">
       <div class="container">
         <h2 class="section__header reveal" id="ai-title" data-bind="ai_section.section_title"></h2>
         <hr class="section__rule reveal" />
@@ -189,7 +195,7 @@
     </section>
 
     <!-- ====================== SEÇÃO 7 — Objetivo de carreira ====================== -->
-    <section class="section" aria-labelledby="objective-title">
+    <section class="section section--subtle" aria-labelledby="objective-title">
       <div class="container">
         <h2 class="section__header reveal" id="objective-title" data-bind="career_objective.section_title"></h2>
         <hr class="section__rule reveal" />

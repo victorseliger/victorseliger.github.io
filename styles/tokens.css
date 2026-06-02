@@ -1,97 +1,126 @@
 /* ============================================================
-   tokens.css — Design System (Apple HIG: clarity, deference, depth)
-   Paleta exata e escala tipográfica do briefing.
-   Cor é função, nunca decoração. Azul só em links/CTAs.
+   tokens.css — Design System (Apple-grade: clarity, deference, depth)
+   Disciplina de cor: neutros + azul #0071E3 só em links/CTAs.
+   A riqueza vem de escala, ritmo, profundidade e movimento.
    ============================================================ */
 
 :root {
-  /* ---- Cor: texto ---- */
+  /* ---- Cor: texto (light) ---- */
   --color-text-primary: #1d1d1f;
-  --color-text-secondary: #6e6e73;
+  --color-text-secondary: #515154;
   --color-text-tertiary: #86868b;
 
   /* ---- Cor: superfícies ---- */
   --color-bg: #ffffff;
   --color-bg-subtle: #f5f5f7;
+  --color-bg-elevated: #ffffff;
 
   /* ---- Cor: linhas / divisores ---- */
   --color-divider: #d2d2d7;
+  --color-divider-strong: #c7c7cc;
 
-  /* ---- Cor: acento (USAR APENAS em links e CTAs) ---- */
+  /* ---- Cor: acento (APENAS links e CTAs) ---- */
   --color-accent: #0071e3;
   --color-accent-hover: #0077ed;
   --color-accent-active: #006edb;
+
+  /* ---- Cor: seção escura (profundidade dramática, estilo Apple) ---- */
+  --color-dark-bg: #0a0a0c;
+  --color-dark-bg-2: #161618;
+  --color-dark-text: #f5f5f7;
+  --color-dark-text-secondary: #a1a1a6;
+  --color-dark-text-tertiary: #6e6e73;
+  --color-dark-divider: rgba(255, 255, 255, 0.12);
+  --color-dark-surface: rgba(255, 255, 255, 0.04);
+  --color-dark-surface-border: rgba(255, 255, 255, 0.1);
 
   /* ---- Tipografia ---- */
   --font-sans: "SF Pro Display", "SF Pro Text", -apple-system,
     BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
 
-  /* Escala (briefing em pt → convertida pra rem, base 16px).
-     Mantém a proporção do briefing mas escala suave em viewport. */
-  --text-hero: clamp(1.5rem, 1.1rem + 1.8vw, 2.125rem);   /* hero promise ~28-34pt */
-  --text-name: clamp(2rem, 1.5rem + 2.2vw, 3rem);          /* nome / hero name */
-  --text-name-about: clamp(1.5rem, 1.2rem + 1vw, 2rem);    /* nome no Sobre ~32pt */
-  --text-subhead: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); /* role / headline */
-  --text-section: 0.8125rem;                               /* section header ~14pt */
-  --text-subsection: 0.75rem;                              /* subsection ~12pt */
-  --text-body: 1.0625rem;                                  /* corpo legível em web */
-  --text-small: 0.875rem;                                  /* meta / microcopy */
-  --text-kpi: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);      /* números grandes */
+  /* Escala com contraste forte (base 16px). Display grande de verdade. */
+  --text-eyebrow: 0.8125rem;                              /* 13px — rótulo/numeração */
+  --text-small: 0.9375rem;                                /* 15px — meta/microcopy */
+  --text-body: 1.125rem;                                  /* 18px — corpo legível */
+  --text-lead: clamp(1.1875rem, 1.05rem + 0.7vw, 1.5rem); /* parágrafo de destaque */
+  --text-statement: clamp(1.5rem, 1rem + 2.2vw, 2.5rem);  /* frases-manifesto */
+  --text-h2: clamp(2rem, 1.2rem + 3.2vw, 3.5rem);         /* títulos de seção */
+  --text-display: clamp(2.75rem, 1.2rem + 6.4vw, 6rem);   /* nome no hero */
+  --text-hero-promise: clamp(1.5rem, 1.05rem + 2vw, 2.625rem);
+  --text-kpi: clamp(2.75rem, 1.8rem + 4vw, 5rem);         /* números grandes */
+  --text-subhead: clamp(1.0625rem, 1rem + 0.5vw, 1.375rem);
 
   /* Pesos */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
+  --weight-bold: 700;
 
-  /* Tracking */
-  --tracking-tight: -0.02em;
-  --tracking-section: 0.08em;   /* section headers abertos */
+  /* Tracking (Apple aperta títulos grandes) */
+  --tracking-display: -0.03em;
+  --tracking-tight: -0.022em;
+  --tracking-snug: -0.01em;
+  --tracking-eyebrow: 0.12em;
 
   /* Line-height */
-  --leading-tight: 1.15;
-  --leading-snug: 1.3;
-  --leading-normal: 1.55;
+  --leading-display: 1.05;
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
 
-  /* ---- Espaçamento ---- */
+  /* ---- Espaçamento (respiro Apple, generoso) ---- */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
+  --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
-  --space-section: clamp(4rem, 3rem + 5vw, 8rem); /* respiro vertical entre seções */
-  --container-max: 980px;                          /* largura de leitura confortável */
-  --container-narrow: 720px;
+  --space-20: 5rem;
+  --space-section: clamp(6rem, 4rem + 8vw, 11rem);  /* respiro vertical dramático */
+  --container-max: 1080px;
+  --container-narrow: 760px;
 
-  /* ---- Bordas / raios ---- */
-  --radius-sm: 8px;   /* Apple usa cantos sutis, máx 8 em cards comuns */
-  --radius-photo: 12px;
-  --hairline: 0.5px;  /* linhas finíssimas */
+  /* ---- Bordas / raios (Apple: pills + cards generosos) ---- */
+  --radius-card: 18px;
+  --radius-card-lg: 24px;
+  --radius-pill: 980px;
+  --radius-photo: 22px;
+  --hairline: 1px;
 
-  /* ---- Sombras (apenas em CTAs e hover de card) ---- */
-  --shadow-cta: 0 1px 3px rgba(0, 113, 227, 0.18);
-  --shadow-cta-hover: 0 4px 14px rgba(0, 113, 227, 0.28);
-  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
+  /* ---- Sombras (depth em camadas, difusão suave) ---- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.1);
+  --shadow-photo: 0 30px 60px -18px rgba(0, 0, 0, 0.28);
+  --shadow-cta: 0 1px 2px rgba(0, 113, 227, 0.25);
+  --shadow-cta-hover: 0 8px 22px rgba(0, 113, 227, 0.34);
+  --shadow-dark-glow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
 
-  /* ---- Movimento ---- */
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 500ms;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* ---- Movimento (easing Apple) ---- */
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 700ms;
+  --duration-reveal: 900ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-apple: cubic-bezier(0.32, 0.08, 0.24, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ---- Topbar ---- */
-  --topbar-height: 52px;
+  --topbar-height: 56px;
   --z-topbar: 100;
 }
 
-/* Reduced motion: respeita preferência do sistema */
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 0ms;
     --duration-normal: 0ms;
     --duration-slow: 0ms;
+    --duration-reveal: 0ms;
   }
 }

@@ -26,6 +26,16 @@
     els.forEach(function (el) { io.observe(el); });
   };
 
+  LP.initNavScroll = function () {
+    var topbar = document.querySelector(".topbar");
+    if (!topbar) return;
+    function onScroll() {
+      topbar.classList.toggle("is-scrolled", window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  };
+
   LP.initScrollDepth = function () {
     var marks = [25, 50, 75, 100];
     var fired = {};
