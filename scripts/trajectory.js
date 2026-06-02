@@ -13,6 +13,7 @@
   function resetTile(tile) {
     var inner = tile.querySelector(".logo-tile__inner");
     if (inner) inner.style.transform = "";
+    tile.classList.remove("is-hover");
   }
 
   LP.selectTraj = function (i) {
@@ -54,13 +55,19 @@
       var tile = e.target.closest(".logo-tile");
       if (!tile) return;
       var r = tile.getBoundingClientRect();
-      var px = (e.clientX - r.left) / r.width - 0.5;
-      var py = (e.clientY - r.top) / r.height - 0.5;
+      var nx = (e.clientX - r.left) / r.width; // 0..1
+      var ny = (e.clientY - r.top) / r.height; // 0..1
       var inner = tile.querySelector(".logo-tile__inner");
       if (inner) {
+        var rotY = (nx - 0.5) * 18;
+        var rotX = (0.5 - ny) * 14;
         inner.style.transform =
-          "rotateY(" + (px * 16).toFixed(2) + "deg) rotateX(" + (-py * 16).toFixed(2) + "deg)";
+          "rotateX(" + rotX.toFixed(2) + "deg) rotateY(" + rotY.toFixed(2) + "deg) scale(1.03)";
       }
+      // posição do glare segue o cursor
+      tile.style.setProperty("--mx", (nx * 100).toFixed(1) + "%");
+      tile.style.setProperty("--my", (ny * 100).toFixed(1) + "%");
+      tile.classList.add("is-hover");
     });
     container.addEventListener("pointerleave", function () {
       container.querySelectorAll(".logo-tile").forEach(resetTile);

@@ -142,53 +142,56 @@
   transform-style: preserve-3d;
   transition: transform var(--duration-fast) var(--ease-out-expo);
 }
-/* Logo flutuante extrudado em 3D — sem placa, o logo é o objeto.
-   Cor da "lateral" da extrusão = versão escura da cor de marca. */
+/* Logo flutuante em 3D (parallax). O logo levita à frente do card via
+   translateZ — ao inclinar, a profundidade se revela. Sem extrusão suja. */
 .logo3d {
-  --ex: color-mix(in srgb, var(--accent) 42%, #000);
   position: relative;
-  width: 112px;
+  width: 100%;
   height: 104px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateZ(40px);
-  overflow: visible;
+  transform: translateZ(48px);
+  transform-style: preserve-3d;
 }
 .logo3d__img {
-  max-width: 138px;
-  max-height: 72px;
+  max-width: 150px;
+  max-height: 74px;
   width: auto;
   height: auto;
   object-fit: contain;
-  /* Extrusão 3D: drop-shadows empilhados seguem o alpha do SVG,
-     então o relevo respeita o formato real do logo. */
-  filter:
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(1px 1px 0 var(--ex))
-    drop-shadow(2px 11px 9px rgba(0, 0, 0, 0.3));
-  transition: filter var(--duration-normal) var(--ease-apple);
 }
-/* Itaú é quadrado: deixa ele um pouco maior pra equilibrar com o wordmark */
-.logo-tile[style*="EC7000"] .logo3d__img { max-height: 78px; }
+/* Itaú: objeto sólido → sombra de contato limpa (uma só, suave) + um pouco maior */
+.logo-tile[style*="EC7000"] .logo3d__img {
+  max-height: 82px;
+  filter: drop-shadow(0 14px 12px rgba(0, 0, 0, 0.26));
+}
 .logo3d__mark {
-  position: relative;
   color: var(--accent);
   font-weight: var(--weight-bold);
   font-size: 2.6rem;
   line-height: 1;
   letter-spacing: -0.02em;
 }
+
+/* Glare/brilho que segue o cursor (efeito premium de luz) */
+.logo-tile__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0) 42%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-apple);
+  pointer-events: none;
+  z-index: 4;
+}
+.logo-tile.is-hover .logo-tile__glare { opacity: 0.7; }
 @media (prefers-reduced-motion: reduce) {
-  .logo3d__img { transition: none; }
+  .logo-tile__glare { display: none; }
 }
 .logo-tile__name {
   font-weight: var(--weight-semibold);
