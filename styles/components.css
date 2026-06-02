@@ -161,10 +161,29 @@
   height: auto;
   object-fit: contain;
 }
-/* Itaú: objeto sólido → sombra de contato limpa (uma só, suave) + um pouco maior */
+/* Itaú: as letras "itaú" são vazadas (transparentes) no SVG. Um preenchimento
+   branco atrás (coberto pelo laranja, exceto nas letras) deixa as letras brancas.
+   A sombra de contato vai no container — com as letras já preenchidas, o alpha
+   composto é um squircle sólido, então a sombra fica limpa e não vaza. */
+.logo-tile[style*="EC7000"] .logo3d {
+  filter: drop-shadow(0 12px 11px rgba(0, 0, 0, 0.24));
+}
+.logo-tile[style*="EC7000"] .logo3d::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 42px;
+  background: #fff;
+  border-radius: 10px;
+  z-index: 0;
+}
 .logo-tile[style*="EC7000"] .logo3d__img {
   max-height: 82px;
-  filter: drop-shadow(0 14px 12px rgba(0, 0, 0, 0.26));
+  position: relative;
+  z-index: 1;
 }
 .logo3d__mark {
   color: var(--accent);
