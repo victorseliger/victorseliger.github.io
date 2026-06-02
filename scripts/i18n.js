@@ -78,6 +78,29 @@
     );
   }
 
+  /* ---- Trajetória: tile 3D ---- */
+  function trajTile(c, i) {
+    return (
+      '<button class="logo-tile" type="button" role="tab" data-traj-index="' + i + '" aria-selected="false">' +
+      '<span class="logo-tile__inner">' +
+      '<span class="logo3d" style="--accent:' + esc(c.accent || "#2f6bff") + '">' +
+      '<span class="logo3d__mark">' + esc(c.mark || c.name.charAt(0)) + "</span>" +
+      "</span>" +
+      '<span class="logo-tile__name">' + esc(c.name) + "</span>" +
+      '<span class="logo-tile__period">' + esc(c.period) + "</span>" +
+      "</span>" +
+      "</button>"
+    );
+  }
+
+  /* HTML do painel de detalhe de uma empresa (exposto pra trajectory.js) */
+  LP.trajectoryDetailHtml = function (c) {
+    return (
+      '<p class="traj-detail__company">' + esc(c.name) + " · " + esc(c.period) + "</p>" +
+      trajectoryPanelInner(c)
+    );
+  };
+
   function accordionItem(idBase, idx, title, subtitle, panelInnerHtml) {
     var pid = idBase + "-panel-" + idx;
     var sub = subtitle
@@ -103,11 +126,14 @@
   function renderLists(content) {
     var t = document.getElementById("trajectory-list");
     if (t) {
-      t.innerHTML = content.trajectory.companies
-        .map(function (c, i) {
-          return accordionItem("traj", i, c.name, c.period, trajectoryPanelInner(c));
-        })
-        .join("");
+      LP._trajData = content.trajectory.companies;
+      t.innerHTML =
+        '<div class="logo-row" role="tablist">' +
+        LP._trajData.map(trajTile).join("") +
+        "</div>" +
+        '<div class="traj-detail" id="traj-detail" role="region" aria-live="polite"></div>';
+      // re-aplica seleção (preserva ao trocar idioma; default = 0)
+      if (LP.selectTraj) LP.selectTraj(LP.trajSelected || 0);
     }
 
     var s = document.getElementById("stack-list");
