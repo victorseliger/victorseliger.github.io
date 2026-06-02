@@ -1,0 +1,14 @@
+# Documentos internos — NÃO publicar (estratégia, faixa salarial, prompts)
+/BRIEFING_LP_VICTOR.md
+/PROMPT_CLAUDE_CODE_LP.md
+
+# JSON original/duplicado da raiz (o de produção é content/content_lp.json)
+/content_lp.json
+
+# Foto original com fundo azul (o site usa assets/photo-victor.webp)
+/foto perfil.png
+
+# Scratch / ferramentas
+.playwright-mcp/
+*.tmp
+_*.py

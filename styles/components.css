@@ -1,0 +1,390 @@
+/* ============================================================
+   components.css — CTAs, logos fallback, foto, accordions,
+   cards de trajetória/stack/objetivo, KPI grid, prova viva
+   ============================================================ */
+
+/* ============================================================
+   CTAs (única exceção pro azul de acento)
+   ============================================================ */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  transition: background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+  text-decoration: none;
+}
+.cta:hover { text-decoration: none; }
+
+.cta--primary {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: var(--shadow-cta);
+}
+.cta--primary:hover {
+  background: var(--color-accent-hover);
+  box-shadow: var(--shadow-cta-hover);
+  transform: translateY(-1px);
+}
+.cta--primary:active {
+  background: var(--color-accent-active);
+  transform: translateY(0);
+}
+
+.cta--secondary {
+  background: var(--color-bg-subtle);
+  color: var(--color-accent);
+  border: var(--hairline) solid var(--color-divider);
+}
+.cta--secondary:hover {
+  background: #ececef;
+  transform: translateY(-1px);
+}
+
+/* CTAs compactos da topbar */
+.topbar .cta { padding: 6px 12px; font-size: 0.75rem; }
+
+/* Ícone dentro do CTA */
+.cta__icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* Em mobile a topbar vira ícone-only */
+.topbar .cta__label { display: inline; }
+@media (max-width: 600px) {
+  .topbar .cta__label { display: none; }
+  .topbar .cta { padding: 6px; }
+}
+
+/* ============================================================
+   Logos fallback (text-only, estilo Apple HIG)
+   ============================================================ */
+.logo-pill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.logo-pill__name {
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+}
+.logo-pill__period {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   Foto (placeholder até Victor enviar)
+   ============================================================ */
+.about__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-photo);
+  object-fit: cover;
+  background: var(--color-bg-subtle);
+  border: var(--hairline) solid var(--color-divider);
+}
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-photo);
+  background: var(--color-bg-subtle);
+  border: var(--hairline) solid var(--color-divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-weight: var(--weight-semibold);
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+}
+@media (max-width: 768px) {
+  .about__photo, .photo-placeholder {
+    max-width: 220px;
+    margin-inline: auto;
+  }
+}
+
+/* ============================================================
+   Accordion — base compartilhada (trajetória, stack, objetivo)
+   ============================================================ */
+.accordion { display: grid; gap: var(--space-3); }
+
+.accordion__item {
+  border: var(--hairline) solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  transition: box-shadow var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+.accordion__item:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+.accordion__item.is-open {
+  border-color: #c7c7cc;
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  text-align: left;
+}
+
+.accordion__marker {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  transition: transform var(--duration-normal) var(--ease-out);
+  line-height: 1;
+}
+.accordion__item.is-open .accordion__marker {
+  transform: rotate(90deg);
+}
+
+.accordion__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.accordion__title {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-body);
+  letter-spacing: var(--tracking-tight);
+}
+.accordion__subtitle {
+  font-size: var(--text-small);
+  color: var(--color-text-tertiary);
+}
+
+/* corpo expansível: anima max-height */
+.accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-normal) var(--ease-out);
+}
+.accordion__panel-inner {
+  padding: 0 var(--space-6) var(--space-6);
+  color: var(--color-text-secondary);
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion__panel { transition: none; }
+}
+
+/* ---- Conteúdo interno dos painéis ---- */
+.panel__role {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+.panel__manifesto {
+  margin-bottom: var(--space-4);
+  max-width: 64ch;
+}
+.panel__bullets { display: grid; gap: var(--space-2); margin-bottom: var(--space-4); }
+.panel__bullets li {
+  position: relative;
+  padding-left: 1.4em;
+  max-width: 64ch;
+}
+.panel__bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--color-text-secondary); /* bullet em cor de texto, não azul */
+}
+.panel__stack {
+  font-size: var(--text-small);
+  color: var(--color-text-tertiary);
+  padding-top: var(--space-3);
+  border-top: var(--hairline) solid var(--color-divider);
+}
+
+/* sub-roles (Itaú: 3 cargos dentro do mesmo card) */
+.subrole { padding-top: var(--space-6); }
+.subrole + .subrole {
+  margin-top: var(--space-6);
+  border-top: var(--hairline) solid var(--color-divider);
+}
+.subrole__period {
+  font-size: var(--text-subsection);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-1);
+}
+
+/* stack / objetivo: tecnologias na linha do trigger */
+.accordion__tech {
+  font-size: var(--text-small);
+  color: var(--color-text-tertiary);
+}
+
+/* labels internos (Valor gerado / Case destaque / Fit técnico) */
+.panel__label {
+  font-size: var(--text-subsection);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin: var(--space-4) 0 var(--space-2);
+}
+.panel__label:first-child { margin-top: var(--space-2); }
+
+.panel__case {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================================
+   KPI grid (Em números)
+   ============================================================ */
+.kpi-section-title {
+  font-size: var(--text-subsection);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin: var(--space-12) 0 var(--space-6);
+  text-align: center;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-8) var(--space-6);
+  text-align: center;
+}
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+}
+.kpi__value {
+  font-size: var(--text-kpi);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+.kpi__value.is-placeholder { color: var(--color-text-tertiary); }
+.kpi__label {
+  font-size: var(--text-small);
+  color: var(--color-text-secondary);
+  max-width: 22ch;
+}
+
+/* AI bullets (3 destaques antes dos KPIs) */
+.ai-bullets { display: grid; gap: var(--space-6); margin-bottom: var(--space-8); }
+.ai-bullet { position: relative; padding-left: 1.6em; max-width: 64ch; }
+.ai-bullet::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-text-secondary);
+}
+.ai-bullet__label {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+}
+.ai-bullet__text { color: var(--color-text-secondary); }
+
+/* Prova viva */
+.proof {
+  margin-top: var(--space-12);
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-divider);
+}
+.proof__label {
+  font-size: var(--text-subsection);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-1);
+}
+.proof__text { color: var(--color-text-secondary); font-style: italic; max-width: 50ch; }
+
+/* ============================================================
+   Career objective — fit + application em 2 colunas no painel
+   ============================================================ */
+.objective__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+@media (max-width: 600px) {
+  .objective__cols { grid-template-columns: 1fr; gap: var(--space-6); }
+}
+
+/* ============================================================
+   Final CTA
+   ============================================================ */
+.final {
+  text-align: center;
+  padding-block: var(--space-section);
+  border-top: var(--hairline) solid var(--color-divider);
+}
+.final__p1 {
+  font-size: var(--text-subhead);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-tight);
+  max-width: 30ch;
+  margin-inline: auto;
+}
+.final__p2 {
+  margin-top: var(--space-6);
+  color: var(--color-text-secondary);
+}
+.final__p2 span { display: block; }
+.final__p3 {
+  margin-top: var(--space-6);
+  color: var(--color-text-primary);
+}
+.final__next-label {
+  margin: var(--space-12) 0 var(--space-6);
+  font-size: var(--text-subsection);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.1em;
+  color: var(--color-text-tertiary);
+}
+.final__ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+.final__cta-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+.final__cta-sub {
+  font-size: var(--text-small);
+  color: var(--color-text-tertiary);
+}
+.final__cta-row .cta { min-width: 240px; justify-content: center; }
+.final__signature {
+  margin-top: var(--space-12);
+  color: var(--color-text-secondary);
+  font-size: var(--text-subhead);
+}

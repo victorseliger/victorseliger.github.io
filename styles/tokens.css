@@ -1,0 +1,97 @@
+/* ============================================================
+   tokens.css — Design System (Apple HIG: clarity, deference, depth)
+   Paleta exata e escala tipográfica do briefing.
+   Cor é função, nunca decoração. Azul só em links/CTAs.
+   ============================================================ */
+
+:root {
+  /* ---- Cor: texto ---- */
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-tertiary: #86868b;
+
+  /* ---- Cor: superfícies ---- */
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f5f5f7;
+
+  /* ---- Cor: linhas / divisores ---- */
+  --color-divider: #d2d2d7;
+
+  /* ---- Cor: acento (USAR APENAS em links e CTAs) ---- */
+  --color-accent: #0071e3;
+  --color-accent-hover: #0077ed;
+  --color-accent-active: #006edb;
+
+  /* ---- Tipografia ---- */
+  --font-sans: "SF Pro Display", "SF Pro Text", -apple-system,
+    BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala (briefing em pt → convertida pra rem, base 16px).
+     Mantém a proporção do briefing mas escala suave em viewport. */
+  --text-hero: clamp(1.5rem, 1.1rem + 1.8vw, 2.125rem);   /* hero promise ~28-34pt */
+  --text-name: clamp(2rem, 1.5rem + 2.2vw, 3rem);          /* nome / hero name */
+  --text-name-about: clamp(1.5rem, 1.2rem + 1vw, 2rem);    /* nome no Sobre ~32pt */
+  --text-subhead: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem); /* role / headline */
+  --text-section: 0.8125rem;                               /* section header ~14pt */
+  --text-subsection: 0.75rem;                              /* subsection ~12pt */
+  --text-body: 1.0625rem;                                  /* corpo legível em web */
+  --text-small: 0.875rem;                                  /* meta / microcopy */
+  --text-kpi: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);      /* números grandes */
+
+  /* Pesos */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Tracking */
+  --tracking-tight: -0.02em;
+  --tracking-section: 0.08em;   /* section headers abertos */
+
+  /* Line-height */
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.55;
+
+  /* ---- Espaçamento ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-section: clamp(4rem, 3rem + 5vw, 8rem); /* respiro vertical entre seções */
+  --container-max: 980px;                          /* largura de leitura confortável */
+  --container-narrow: 720px;
+
+  /* ---- Bordas / raios ---- */
+  --radius-sm: 8px;   /* Apple usa cantos sutis, máx 8 em cards comuns */
+  --radius-photo: 12px;
+  --hairline: 0.5px;  /* linhas finíssimas */
+
+  /* ---- Sombras (apenas em CTAs e hover de card) ---- */
+  --shadow-cta: 0 1px 3px rgba(0, 113, 227, 0.18);
+  --shadow-cta-hover: 0 4px 14px rgba(0, 113, 227, 0.28);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* ---- Movimento ---- */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Topbar ---- */
+  --topbar-height: 52px;
+  --z-topbar: 100;
+}
+
+/* Reduced motion: respeita preferência do sistema */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}
