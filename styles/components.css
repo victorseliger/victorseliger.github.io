@@ -142,7 +142,7 @@
   font-family: var(--font-grotesk);
   font-style: normal;
 }
-.hero__name { font-weight: 700; letter-spacing: -0.035em; }
+.hero__name { font-weight: 700; letter-spacing: -0.035em; line-height: 1.08; padding-bottom: 0.12em; }
 .section__header { font-weight: 600; letter-spacing: -0.03em; }
 .section__header em { font-weight: 600; }
 .what__headline, .ai__manifesto, .final__p1 { font-weight: 600; letter-spacing: -0.025em; }
