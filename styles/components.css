@@ -204,3 +204,18 @@
 
 /* Detalhe animado (recolhe/expande ao trocar de empresa) */
 .traj-detail { overflow: hidden; transition: max-height 340ms var(--ease-apple), opacity 300ms var(--ease-apple); }
+
+/* Painel de detalhe herda a cor da marca + logo pequena (navegação clara) */
+.traj-detail__body { border-left: 3px solid var(--accent); padding-left: var(--space-6); }
+.traj-detail__head { display: flex; align-items: center; gap: 14px; margin-bottom: var(--space-6); }
+.traj-detail__logo { height: 28px; width: auto; flex-shrink: 0; }
+.traj-detail__company { margin: 0; color: var(--accent); }
+@media (max-width: 600px) { .traj-detail__body { padding-left: var(--space-4); } }
+
+/* KPIs: não quebrar o valor (ex.: 3-5x) + centralizar no mobile */
+.kpi__value { white-space: nowrap; }
+@media (max-width: 600px) {
+  .kpi-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-10) var(--space-8); }
+  .kpi { flex: 0 1 150px; align-items: center; text-align: center; }
+  .kpi__label { max-width: 20ch; }
+}

@@ -123,9 +123,15 @@
         );
       })
       .join("");
+    var brand = esc(c.accent || "#7c5cff");
     return (
+      '<div class="traj-detail__body" style="--accent:' + brand + ";--accent-bright:" + brand + '">' +
+      '<div class="traj-detail__head">' +
+      (c.logo ? '<img class="traj-detail__logo" src="' + esc(c.logo) + '" alt="' + esc(c.name) + '" />' : "") +
       '<p class="traj-detail__company">' + esc(c.name) + " · " + esc(c.period) + "</p>" +
-      '<div class="accordion" data-accordion="trajsub">' + items + "</div>"
+      "</div>" +
+      '<div class="accordion" data-accordion="trajsub">' + items + "</div>" +
+      "</div>"
     );
   };
 

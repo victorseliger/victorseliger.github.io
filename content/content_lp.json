@@ -30,8 +30,8 @@
       "kicker": "engenharia · dados · ia aplicada",
       "availability_line1": "São Paulo · Disponível pra fintechs B2B e SaaS data-driven",
       "availability_line2": "Modelos: PJ · Híbrido · Remoto · Internacional remoto OK",
-      "cta_primary_label": "InMail no LinkedIn (recomendado)",
-      "cta_secondary_label": "WhatsApp direto"
+      "cta_primary_label": "InMail",
+      "cta_secondary_label": "WhatsApp"
     },
 
     "about": {
@@ -292,11 +292,11 @@
       "p3": "Esses 3 minutos são caros. Tentei caber neles.",
       "next_step_label": "Próximo passo",
       "primary_cta": {
-        "label": "InMail no LinkedIn",
+        "label": "InMail",
         "subtext": "recomendado · 80% mais conversão"
       },
       "secondary_cta": {
-        "label": "WhatsApp direto",
+        "label": "WhatsApp",
         "subtext": "atalho · responde em até 5 min"
       },
       "signature": "— Victor"
@@ -330,8 +330,8 @@
       "kicker": "engineering · data · applied ai",
       "availability_line1": "São Paulo · Available for B2B fintech and data-driven SaaS",
       "availability_line2": "Models: PJ (contractor) · Hybrid · Remote · International remote OK",
-      "cta_primary_label": "InMail on LinkedIn (recommended)",
-      "cta_secondary_label": "Direct WhatsApp"
+      "cta_primary_label": "InMail",
+      "cta_secondary_label": "WhatsApp"
     },
 
     "about": {
@@ -592,11 +592,11 @@
       "p3": "These 3 minutes are expensive. I tried to fit in them.",
       "next_step_label": "Next step",
       "primary_cta": {
-        "label": "InMail on LinkedIn",
+        "label": "InMail",
         "subtext": "recommended · 80% higher conversion"
       },
       "secondary_cta": {
-        "label": "Direct WhatsApp",
+        "label": "WhatsApp",
         "subtext": "shortcut · responds in up to 5 min"
       },
       "signature": "— Victor"
