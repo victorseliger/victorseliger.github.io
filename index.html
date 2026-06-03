@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Meta preenchido dinamicamente por content.js; defaults pra SEO/no-JS abaixo -->
   <title>Victor Seliger — Senior Implementation &amp; Solutions Engineer · AI-Native Delivery</title>
   <meta name="description" content="Página feita pra você ler em 3 minutos e sair sabendo se vale a conversa. 9 anos em mercado financeiro, IA aplicada em produção." />
   <meta name="author" content="Victor Seliger" />
+  <meta name="theme-color" content="#0c0b0f" />
   <link rel="canonical" href="https://victorseliger.github.io/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Victor Seliger — Senior Implementation &amp; Solutions Engineer" />
   <meta property="og:description" content="Página feita pra recrutador ler em 3 minutos e sair sabendo se vale a conversa." />
@@ -19,15 +18,13 @@
   <meta property="og:locale:alternate" content="en_US" />
   <meta name="twitter:card" content="summary" />
 
-  <!-- Favicon (monograma VS) -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
-  <!-- Estilos -->
+  <link rel="stylesheet" href="styles/fonts.css" />
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/components.css" />
 
-  <!-- Schema.org Person -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,29 +39,25 @@
   }
   </script>
 
-  <!-- ============================================================
-       ANALYTICS (Plausible) — INATIVO.
-       Victor: descomente e troque data-domain quando criar a conta.
-       <script defer data-domain="victorseliger.github.io"
-               src="https://plausible.io/js/script.tagged-events.js"></script>
-       ============================================================ -->
+  <!-- ANALYTICS (Plausible) — INATIVO. Descomente e ajuste data-domain ao criar a conta.
+       <script defer data-domain="victorseliger.github.io" src="https://plausible.io/js/script.tagged-events.js"></script> -->
 </head>
 
 <body>
-  <!-- ====================== SEÇÃO 0 — Topbar ====================== -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ====================== Topbar ====================== -->
   <header class="topbar">
     <div class="container topbar__inner">
       <div class="topbar__brand">
-        <span class="monogram" aria-hidden="true">VS</span>
+        <span class="monogram" aria-hidden="true">vs</span>
         <span class="topbar__name" data-bind="topbar.name">Victor Seliger</span>
       </div>
-
       <div class="topbar__actions">
         <div class="lang-toggle" role="group" data-bind-aria-label="topbar.lang_toggle_aria">
           <button class="lang-toggle__btn" data-lang-btn="pt" aria-pressed="true">PT</button>
           <button class="lang-toggle__btn" data-lang-btn="en" aria-pressed="false">EN</button>
         </div>
-
         <a class="cta cta--primary" data-cta="inmail" target="_blank" rel="noopener" href="#">
           <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
           <span class="cta__label" data-bind="topbar.cta_primary">InMail</span>
@@ -78,16 +71,17 @@
   </header>
 
   <main>
-    <!-- ====================== SEÇÃO 1 — Hero ====================== -->
+    <!-- ====================== Hero ====================== -->
     <section class="hero" aria-labelledby="hero-name">
+      <div class="hero__aurora" aria-hidden="true"></div>
       <div class="container">
-        <h1 class="hero__promise reveal">
+        <span class="hero__eyebrow reveal"><span class="dot"></span><span data-bind="hero.kicker"></span></span>
+        <h1 class="hero__name" id="hero-name" data-typewriter><span class="type-text"></span><span class="type-caret" aria-hidden="true">&nbsp;</span></h1>
+        <p class="hero__role reveal" data-delay="1" data-bind="hero.role"></p>
+        <p class="hero__promise reveal" data-delay="2">
           <span class="line-1" data-bind="hero.promise_line1"></span>
           <span class="line-2" data-bind="hero.promise_line2"></span>
-        </h1>
-        <hr class="hero__rule reveal" data-delay="1" />
-        <p class="hero__name reveal" data-delay="1" id="hero-name" data-bind="hero.name"></p>
-        <p class="hero__role reveal" data-delay="2" data-bind="hero.role"></p>
+        </p>
         <p class="hero__availability reveal" data-delay="3">
           <span data-bind="hero.availability_line1"></span>
           <span data-bind="hero.availability_line2"></span>
@@ -103,11 +97,19 @@
       </div>
     </section>
 
-    <!-- ====================== SEÇÃO 2 — Sobre mim ====================== -->
-    <section class="section" aria-labelledby="about-title">
+    <!-- ====================== Marquee ====================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Claude Code</span><span class="sep">/</span><span>n8n</span><span class="sep">/</span><span>Anthropic API</span><span class="sep">/</span><span>SQL</span><span class="sep">/</span><span>Postgres</span><span class="sep">/</span><span>DuckDB</span><span class="sep">/</span><span>ETL</span><span class="sep">/</span><span>MT940</span><span class="sep">/</span><span>BACEN</span><span class="sep">/</span><span>AWS</span><span class="sep">/</span><span>MCP</span><span class="sep">/</span>
+        <span>Claude Code</span><span class="sep">/</span><span>n8n</span><span class="sep">/</span><span>Anthropic API</span><span class="sep">/</span><span>SQL</span><span class="sep">/</span><span>Postgres</span><span class="sep">/</span><span>DuckDB</span><span class="sep">/</span><span>ETL</span><span class="sep">/</span><span>MT940</span><span class="sep">/</span><span>BACEN</span><span class="sep">/</span><span>AWS</span><span class="sep">/</span><span>MCP</span><span class="sep">/</span>
+      </div>
+    </div>
+
+    <!-- ====================== Sobre mim ====================== -->
+    <section class="section theme-plum" aria-labelledby="about-title">
+      <div class="section__bignum" aria-hidden="true">01</div>
       <div class="container">
         <h2 class="section__header reveal" id="about-title" data-bind="about.section_title"></h2>
-        <hr class="section__rule reveal" />
         <div class="about__grid reveal">
           <div>
             <img class="about__photo" src="assets/photo-victor.webp"
@@ -141,20 +143,20 @@
       </div>
     </section>
 
-    <!-- ====================== SEÇÃO 3 — Trajetória ====================== -->
-    <section class="section" aria-labelledby="trajectory-title">
+    <!-- ====================== Trajetória ====================== -->
+    <section class="section theme-cream" aria-labelledby="trajectory-title">
+      <div class="section__bignum" aria-hidden="true">02</div>
       <div class="container">
         <h2 class="section__header reveal" id="trajectory-title" data-bind="trajectory.section_title"></h2>
-        <hr class="section__rule reveal" />
         <div class="reveal" id="trajectory-list" data-trajectory></div>
       </div>
     </section>
 
-    <!-- ====================== SEÇÃO 4 — O que faço ====================== -->
-    <section class="section section--subtle" aria-labelledby="what-title">
+    <!-- ====================== O que faço ====================== -->
+    <section class="section theme-graphite" aria-labelledby="what-title">
+      <div class="section__bignum" aria-hidden="true">03</div>
       <div class="container">
         <h2 class="section__header reveal" id="what-title" data-bind="what_i_do.section_title"></h2>
-        <hr class="section__rule reveal" />
         <p class="what__headline reveal" data-bind="what_i_do.headline"></p>
         <div class="what__grid">
           <div class="what__block reveal">
@@ -169,11 +171,11 @@
       </div>
     </section>
 
-    <!-- ====================== SEÇÃO 5 — Como me destaco com IA ====================== -->
-    <section class="section section--dark" aria-labelledby="ai-title">
+    <!-- ====================== Como me destaco com IA ====================== -->
+    <section class="section theme-indigo" aria-labelledby="ai-title">
+      <div class="section__bignum" aria-hidden="true">04</div>
       <div class="container">
         <h2 class="section__header reveal" id="ai-title" data-bind="ai_section.section_title"></h2>
-        <hr class="section__rule reveal" />
         <p class="ai__manifesto reveal" data-bind="ai_section.manifesto"></p>
         <ul class="ai-bullets reveal" id="ai-bullets"></ul>
         <p class="kpi-section-title reveal" data-bind="ai_section.kpi_section_title"></p>
@@ -185,26 +187,26 @@
       </div>
     </section>
 
-    <!-- ====================== SEÇÃO 6 — Stack técnica e soft skills ====================== -->
-    <section class="section" aria-labelledby="stack-title">
+    <!-- ====================== Stack técnica e soft skills ====================== -->
+    <section class="section theme-cream" aria-labelledby="stack-title">
+      <div class="section__bignum" aria-hidden="true">05</div>
       <div class="container">
         <h2 class="section__header reveal" id="stack-title" data-bind="stack_section.section_title"></h2>
-        <hr class="section__rule reveal" />
         <div class="accordion reveal" id="stack-list" data-accordion="stack"></div>
       </div>
     </section>
 
-    <!-- ====================== SEÇÃO 7 — Objetivo de carreira ====================== -->
-    <section class="section section--subtle" aria-labelledby="objective-title">
+    <!-- ====================== Objetivo de carreira ====================== -->
+    <section class="section theme-plum" aria-labelledby="objective-title">
+      <div class="section__bignum" aria-hidden="true">06</div>
       <div class="container">
         <h2 class="section__header reveal" id="objective-title" data-bind="career_objective.section_title"></h2>
-        <hr class="section__rule reveal" />
         <p class="what__headline reveal" data-bind="career_objective.intro"></p>
         <div class="accordion reveal" id="objective-list" data-accordion="objective"></div>
       </div>
     </section>
 
-    <!-- ====================== SEÇÃO 8 — Bloco final (CTA) ====================== -->
+    <!-- ====================== Bloco final (CTA) ====================== -->
     <section class="final" aria-labelledby="final-p1">
       <div class="container">
         <p class="final__p1 reveal" id="final-p1" data-bind="final_cta.p1"></p>
@@ -229,7 +231,6 @@
     </section>
   </main>
 
-  <!-- ====================== Footer ====================== -->
   <footer class="footer">
     <div class="container">
       <p data-bind="footer.credits"></p>
@@ -240,12 +241,12 @@
     </div>
   </footer>
 
-  <!-- Scripts (vanilla, sem framework). defer mantém ordem e não bloqueia render. -->
   <script defer src="scripts/content.js"></script>
   <script defer src="scripts/analytics.js"></script>
   <script defer src="scripts/i18n.js"></script>
   <script defer src="scripts/accordion.js"></script>
   <script defer src="scripts/trajectory.js"></script>
+  <script defer src="scripts/effects.js"></script>
   <script defer src="scripts/scroll.js"></script>
   <script defer src="scripts/main.js"></script>
 </body>

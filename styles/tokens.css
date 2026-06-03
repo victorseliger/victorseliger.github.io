@@ -1,75 +1,90 @@
 /* ============================================================
-   tokens.css — Design System (Apple-grade: clarity, deference, depth)
-   Disciplina de cor: neutros + azul #0071E3 só em links/CTAs.
-   A riqueza vem de escala, ritmo, profundidade e movimento.
+   tokens.css — Dark luxury + acento elétrico. Serif × grotesk.
+   Cores semânticas (--t-*) que cada seção sobrescreve → as
+   seções "quebram por cor" mantendo os componentes coerentes.
    ============================================================ */
 
 :root {
-  /* ---- Cor: texto (light) ---- */
-  --color-text-primary: #1d1d1f;
-  --color-text-secondary: #515154;
-  --color-text-tertiary: #86868b;
+  /* ---- Fontes ---- */
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-grotesk: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* ---- Cor: superfícies ---- */
-  --color-bg: #ffffff;
-  --color-bg-subtle: #f5f5f7;
-  --color-bg-elevated: #ffffff;
+  /* ---- Paleta base ---- */
+  --bg: #0c0b0f;            /* preto quente — base global */
+  --bg-graphite: #16141c;
+  --bg-plum: #190f24;
+  --bg-indigo: #0f1026;
+  --cream: #f4eee4;         /* respiro claro */
+  --cream-ink: #1a1620;
 
-  /* ---- Cor: linhas / divisores ---- */
-  --color-divider: #d2d2d7;
-  --color-divider-strong: #c7c7cc;
+  --ink: #f5f1ea;           /* texto em fundo escuro */
+  --ink-dim: #a8a1b2;
+  --ink-faint: #726c7e;
 
-  /* ---- Cor: acento (APENAS links e CTAs) ---- */
-  --color-accent: #0071e3;
-  --color-accent-hover: #0077ed;
-  --color-accent-active: #006edb;
+  /* Acento elétrico (violeta) — links, CTAs, destaques */
+  --accent: #7c5cff;
+  --accent-bright: #a48dff;
+  --accent-deep: #5b3ee0;
+  --accent-2: #36e0c4;      /* secundário (raro, p/ grafismo) */
 
-  /* ---- Cor: seção escura (profundidade dramática, estilo Apple) ---- */
-  --color-dark-bg: #0a0a0c;
-  --color-dark-bg-2: #161618;
-  --color-dark-text: #f5f5f7;
-  --color-dark-text-secondary: #a1a1a6;
-  --color-dark-text-tertiary: #6e6e73;
-  --color-dark-divider: rgba(255, 255, 255, 0.12);
-  --color-dark-surface: rgba(255, 255, 255, 0.04);
-  --color-dark-surface-border: rgba(255, 255, 255, 0.1);
+  /* ---- Tokens semânticos (default = tema escuro) ---- */
+  --t-primary: var(--ink);
+  --t-secondary: var(--ink-dim);
+  --t-tertiary: var(--ink-faint);
+  --t-line: rgba(255, 255, 255, 0.12);
+  --t-line-strong: rgba(255, 255, 255, 0.22);
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-2: rgba(255, 255, 255, 0.07);
+  --surface-line: rgba(255, 255, 255, 0.12);
+  --section-bg: var(--bg);
 
-  /* ---- Tipografia ---- */
-  --font-sans: "SF Pro Display", "SF Pro Text", -apple-system,
-    BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+  /* ---- Aliases (usados pelos componentes; resolvem os --t-* no cascateamento) ---- */
+  --color-text-primary: var(--t-primary);
+  --color-text-secondary: var(--t-secondary);
+  --color-text-tertiary: var(--t-tertiary);
+  --color-divider: var(--t-line);
+  --color-divider-strong: var(--t-line-strong);
+  --color-bg: var(--section-bg);
+  --color-bg-subtle: var(--surface);
+  --color-bg-elevated: var(--surface);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-bright);
+  --color-accent-active: var(--accent-deep);
+  --color-dark-text: var(--ink);
+  --color-dark-text-secondary: var(--ink-dim);
+  --color-dark-text-tertiary: var(--ink-faint);
+  --color-dark-surface: var(--surface);
+  --color-dark-surface-border: var(--surface-line);
 
-  /* Escala com contraste forte (base 16px). Display grande de verdade. */
-  --text-eyebrow: 0.8125rem;                              /* 13px — rótulo/numeração */
-  --text-small: 0.9375rem;                                /* 15px — meta/microcopy */
-  --text-body: 1.125rem;                                  /* 18px — corpo legível */
-  --text-lead: clamp(1.1875rem, 1.05rem + 0.7vw, 1.5rem); /* parágrafo de destaque */
-  --text-statement: clamp(1.5rem, 1rem + 2.2vw, 2.5rem);  /* frases-manifesto */
-  --text-h2: clamp(2rem, 1.2rem + 3.2vw, 3.5rem);         /* títulos de seção */
-  --text-display: clamp(2.75rem, 1.2rem + 6.4vw, 6rem);   /* nome no hero */
-  --text-hero-promise: clamp(1.5rem, 1.05rem + 2vw, 2.625rem);
-  --text-kpi: clamp(2.75rem, 1.8rem + 4vw, 5rem);         /* números grandes */
+  /* ---- Tipografia (escala) ---- */
+  --text-eyebrow: 0.8125rem;
+  --text-small: 0.9375rem;
+  --text-body: 1.125rem;
+  --text-lead: clamp(1.1875rem, 1.05rem + 0.7vw, 1.5rem);
+  --text-statement: clamp(1.75rem, 1.1rem + 2.6vw, 3rem);
+  --text-h2: clamp(2.25rem, 1.3rem + 3.8vw, 4.25rem);
+  --text-display: clamp(3rem, 1.1rem + 8vw, 7.5rem);
+  --text-hero-promise: clamp(1.0625rem, 0.95rem + 0.7vw, 1.375rem);
+  --text-kpi: clamp(3rem, 1.8rem + 5vw, 6rem);
   --text-subhead: clamp(1.0625rem, 1rem + 0.5vw, 1.375rem);
 
-  /* Pesos */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
 
-  /* Tracking (Apple aperta títulos grandes) */
-  --tracking-display: -0.03em;
-  --tracking-tight: -0.022em;
-  --tracking-snug: -0.01em;
-  --tracking-eyebrow: 0.12em;
+  --tracking-display: -0.01em;
+  --tracking-tight: -0.015em;
+  --tracking-grotesk: -0.02em;
+  --tracking-eyebrow: 0.04em;
 
-  /* Line-height */
-  --leading-display: 1.05;
-  --leading-tight: 1.1;
-  --leading-snug: 1.25;
+  --leading-display: 0.98;
+  --leading-tight: 1.08;
+  --leading-snug: 1.22;
   --leading-normal: 1.5;
-  --leading-relaxed: 1.6;
+  --leading-relaxed: 1.62;
 
-  /* ---- Espaçamento (respiro Apple, generoso) ---- */
+  /* ---- Espaçamento ---- */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -81,39 +96,54 @@
   --space-12: 3rem;
   --space-16: 4rem;
   --space-20: 5rem;
-  --space-section: clamp(6rem, 4rem + 8vw, 11rem);  /* respiro vertical dramático */
-  --container-max: 1080px;
+  --space-section: clamp(6rem, 4rem + 8vw, 11rem);
+  --container-max: 1120px;
   --container-narrow: 760px;
 
-  /* ---- Bordas / raios (Apple: pills + cards generosos) ---- */
-  --radius-card: 18px;
-  --radius-card-lg: 24px;
+  /* ---- Raios ---- */
+  --radius-card: 20px;
+  --radius-card-lg: 28px;
   --radius-pill: 980px;
-  --radius-photo: 22px;
+  --radius-photo: 24px;
   --hairline: 1px;
 
-  /* ---- Sombras (depth em camadas, difusão suave) ---- */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.1);
-  --shadow-photo: 0 30px 60px -18px rgba(0, 0, 0, 0.28);
-  --shadow-cta: 0 1px 2px rgba(0, 113, 227, 0.25);
-  --shadow-cta-hover: 0 8px 22px rgba(0, 113, 227, 0.34);
-  --shadow-dark-glow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  /* ---- Sombras ---- */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 28px 60px rgba(0, 0, 0, 0.5);
+  --shadow-photo: 0 40px 70px -22px rgba(0, 0, 0, 0.65);
+  --glow-accent: 0 10px 40px -8px rgba(124, 92, 255, 0.6);
 
-  /* ---- Movimento (easing Apple) ---- */
+  /* ---- Movimento ---- */
   --duration-fast: 200ms;
   --duration-normal: 400ms;
   --duration-slow: 700ms;
-  --duration-reveal: 900ms;
+  --duration-reveal: 950ms;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-apple: cubic-bezier(0.32, 0.08, 0.24, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* ---- Topbar ---- */
-  --topbar-height: 56px;
+  /* ---- Grão (textura premium em fundos escuros) ---- */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+
+  --topbar-height: 60px;
   --z-topbar: 100;
+}
+
+/* ---- Temas de seção (sobrescrevem os --t-* da subárvore) ---- */
+.theme-graphite { --section-bg: var(--bg-graphite); }
+.theme-plum     { --section-bg: var(--bg-plum); }
+.theme-indigo   { --section-bg: var(--bg-indigo); }
+
+.theme-cream {
+  --section-bg: var(--cream);
+  --t-primary: var(--cream-ink);
+  --t-secondary: #534d5e;
+  --t-tertiary: #8b8694;
+  --t-line: rgba(0, 0, 0, 0.1);
+  --t-line-strong: rgba(0, 0, 0, 0.18);
+  --surface: #ffffff;
+  --surface-2: #faf6ef;
+  --surface-line: rgba(0, 0, 0, 0.08);
 }
 
 @media (prefers-reduced-motion: reduce) {

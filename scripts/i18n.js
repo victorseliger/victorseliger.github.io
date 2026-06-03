@@ -232,6 +232,8 @@
     renderLists(content);
     renderCtaLinks(lang);
     renderMeta(content);
+    if (LP.typeHero) LP.typeHero(content.hero && content.hero.name);
+    if (LP.observeKpis) LP.observeKpis();
   };
 
   LP.setLang = function (lang) {
