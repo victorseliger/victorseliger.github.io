@@ -181,3 +181,26 @@
   mask-image: linear-gradient(to bottom, #000 82%, transparent 99%);
 }
 @media (prefers-reduced-motion: reduce) { .portrait__glow { animation: none; } }
+
+/* ============================================================
+   Trajetória v2 — clareza de clique, tile cresce/encolhe,
+   cargos animados, Dattos maior e mais saltado.
+   ============================================================ */
+.traj-hint { display: inline-flex; align-items: center; gap: 10px; font-size: var(--text-small); color: var(--t-secondary); margin-bottom: var(--space-6); }
+.traj-hint::before { content: "+"; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 14px; line-height: 1; }
+
+.logo-row { display: flex; flex-wrap: wrap; gap: var(--space-6); margin-bottom: var(--space-10); }
+.logo-tile { flex: 1 1 220px; transition: flex-grow var(--duration-normal) var(--ease-apple), box-shadow var(--duration-normal) var(--ease-apple), border-color var(--duration-normal) var(--ease-apple); }
+.logo-tile.is-selected { flex-grow: 1.7; }
+
+.logo-tile__plus { position: absolute; top: 14px; right: 16px; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--surface-line); display: flex; align-items: center; justify-content: center; color: var(--t-tertiary); z-index: 5; transition: background var(--duration-fast) var(--ease-apple), color var(--duration-fast) var(--ease-apple), border-color var(--duration-fast) var(--ease-apple), transform var(--duration-fast) var(--ease-apple); }
+.logo-tile__plus::before { content: "+"; font-size: 18px; line-height: 1; }
+.logo-tile.is-selected .logo-tile__plus { background: var(--accent); border-color: var(--accent); color: #fff; transform: rotate(180deg); }
+.logo-tile.is-selected .logo-tile__plus::before { content: "\2212"; } /* − */
+
+/* Dattos: maior, sem sombra, mais saltado pra frente */
+.logo-tile[style*="091F68"] .logo3d { transform: translateZ(70px); }
+.logo-tile[style*="091F68"] .logo3d__img { max-width: 190px; max-height: 98px; }
+
+/* Detalhe animado (recolhe/expande ao trocar de empresa) */
+.traj-detail { overflow: hidden; transition: max-height 340ms var(--ease-apple), opacity 300ms var(--ease-apple); }

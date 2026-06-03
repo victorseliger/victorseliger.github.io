@@ -1,7 +1,7 @@
 /* ============================================================
-   accordion.js — Expansão inline de cards. 1 aberto por vez
-   dentro de cada accordion. Event delegation (sobrevive ao
-   re-render do toggle PT/EN). Teclado + ARIA.
+   accordion.js — Expansão inline. 1 aberto por vez dentro de
+   cada .accordion. Delegação no documento → funciona inclusive
+   para accordions criados dinamicamente (cargos da trajetória).
    ============================================================ */
 (function () {
   "use strict";
@@ -9,36 +9,33 @@
 
   function closeItem(item) {
     item.classList.remove("is-open");
-    var trigger = item.querySelector(".accordion__trigger");
-    var panel = item.querySelector(".accordion__panel");
-    if (trigger) trigger.setAttribute("aria-expanded", "false");
-    if (panel) panel.style.maxHeight = null;
+    var t = item.querySelector(".accordion__trigger");
+    var p = item.querySelector(".accordion__panel");
+    if (t) t.setAttribute("aria-expanded", "false");
+    if (p) p.style.maxHeight = null;
   }
-
   function openItem(item) {
     item.classList.add("is-open");
-    var trigger = item.querySelector(".accordion__trigger");
-    var panel = item.querySelector(".accordion__panel");
-    if (trigger) trigger.setAttribute("aria-expanded", "true");
-    if (panel) panel.style.maxHeight = panel.scrollHeight + "px";
+    var t = item.querySelector(".accordion__trigger");
+    var p = item.querySelector(".accordion__panel");
+    if (t) t.setAttribute("aria-expanded", "true");
+    if (p) p.style.maxHeight = p.scrollHeight + "px";
   }
+  LP.openAccordionItem = openItem;
 
-  function handleTrigger(container, trigger) {
+  function handle(container, trigger) {
     var item = trigger.closest(".accordion__item");
     if (!item) return;
     var isOpen = item.classList.contains("is-open");
-
-    // fecha todos os outros do mesmo accordion
-    container.querySelectorAll(".accordion__item.is-open").forEach(function (other) {
-      if (other !== item) closeItem(other);
+    container.querySelectorAll(".accordion__item.is-open").forEach(function (o) {
+      if (o !== item) closeItem(o);
     });
-
     if (isOpen) {
       closeItem(item);
     } else {
       openItem(item);
       var title = item.querySelector(".accordion__title");
-      LP.track("Accordion Open", {
+      if (LP.track) LP.track("Accordion Open", {
         section: container.getAttribute("data-accordion"),
         item: title ? title.textContent : ""
       });
@@ -46,17 +43,16 @@
   }
 
   LP.initAccordions = function () {
-    document.querySelectorAll("[data-accordion]").forEach(function (container) {
-      container.addEventListener("click", function (e) {
-        var trigger = e.target.closest(".accordion__trigger");
-        if (trigger && container.contains(trigger)) handleTrigger(container, trigger);
-      });
+    document.addEventListener("click", function (e) {
+      var trigger = e.target.closest(".accordion__trigger");
+      if (!trigger) return;
+      var container = trigger.closest(".accordion");
+      if (container) handle(container, trigger);
     });
-
-    // Recalcula max-height de item aberto ao redimensionar (texto reflui)
+    // recalcula painéis abertos ao redimensionar
     window.addEventListener("resize", function () {
-      document.querySelectorAll(".accordion__item.is-open .accordion__panel").forEach(function (panel) {
-        panel.style.maxHeight = panel.scrollHeight + "px";
+      document.querySelectorAll(".accordion__item.is-open .accordion__panel").forEach(function (p) {
+        p.style.maxHeight = p.scrollHeight + "px";
       });
     });
   };

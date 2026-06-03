@@ -86,6 +86,7 @@
     return (
       '<button class="logo-tile" type="button" role="tab" data-traj-index="' + i + '" aria-selected="false" style="--accent:' + esc(c.accent || "#0071e3") + '">' +
       '<span class="logo-tile__glare" aria-hidden="true"></span>' +
+      '<span class="logo-tile__plus" aria-hidden="true"></span>' +
       '<span class="logo-tile__inner">' +
       '<span class="logo3d">' + inner + "</span>" +
       '<span class="logo-tile__name">' + esc(c.name) + "</span>" +
@@ -95,11 +96,36 @@
     );
   }
 
-  /* HTML do painel de detalhe de uma empresa (exposto pra trajectory.js) */
+  /* HTML do painel de detalhe de uma empresa (exposto pra trajectory.js).
+     Cada cargo vira um accordion (recolhe/expande); o primeiro abre. */
   LP.trajectoryDetailHtml = function (c) {
+    var roles = c.sub_roles || [
+      { period: c.period, role: c.role, manifesto: c.manifesto, bullets: c.bullets, stack: c.stack }
+    ];
+    var items = roles
+      .map(function (r, idx) {
+        var open = idx === 0;
+        var pid = "trole-" + esc(c.id || "") + "-" + idx;
+        return (
+          '<div class="accordion__item' + (open ? " is-open" : "") + '">' +
+          '<button class="accordion__trigger" type="button" aria-expanded="' + (open ? "true" : "false") + '" aria-controls="' + pid + '">' +
+          '<span class="accordion__marker" aria-hidden="true">&#9656;</span>' +
+          '<span class="accordion__title-wrap">' +
+          '<span class="accordion__title">' + esc(r.role) + "</span>" +
+          '<span class="accordion__subtitle">' + esc(r.period) + "</span>" +
+          "</span></button>" +
+          '<div class="accordion__panel" id="' + pid + '" role="region"' + (open ? ' style="max-height:none"' : "") + ">" +
+          '<div class="accordion__panel-inner">' +
+          (r.manifesto ? '<p class="panel__manifesto">' + esc(r.manifesto) + "</p>" : "") +
+          bulletList(r.bullets, "panel__bullets") +
+          '<p class="panel__stack">' + esc(r.stack) + "</p>" +
+          "</div></div></div>"
+        );
+      })
+      .join("");
     return (
       '<p class="traj-detail__company">' + esc(c.name) + " · " + esc(c.period) + "</p>" +
-      trajectoryPanelInner(c)
+      '<div class="accordion" data-accordion="trajsub">' + items + "</div>"
     );
   };
 
@@ -130,6 +156,7 @@
     if (t) {
       LP._trajData = content.trajectory.companies;
       t.innerHTML =
+        '<p class="traj-hint">' + esc(content.trajectory.click_hint || "") + "</p>" +
         '<div class="logo-row" role="tablist">' +
         LP._trajData.map(trajTile).join("") +
         "</div>" +
