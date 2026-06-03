@@ -22,7 +22,7 @@
       "lang_toggle_aria": "Trocar idioma"
     },
 
-    "nav": { "start": "Início", "contact": "Contato" },
+    "nav": { "start": "Início", "about": "Sobre", "traj": "Trajetória", "what": "O que faço", "ai": "IA", "stack": "Stack", "obj": "Objetivo", "contact": "Contato" },
 
     "hero": {
       "promise_line1": "Essa página foi feita pra você ler em 3 minutos.",
@@ -324,7 +324,7 @@
       "lang_toggle_aria": "Switch language"
     },
 
-    "nav": { "start": "Start", "contact": "Contact" },
+    "nav": { "start": "Start", "about": "About", "traj": "Trajectory", "what": "What I do", "ai": "AI", "stack": "Stack", "obj": "Goal", "contact": "Contact" },
 
     "hero": {
       "promise_line1": "This page was built for you to read in 3 minutes.",

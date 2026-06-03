@@ -225,13 +225,19 @@
    ============================================================ */
 .hero, .section, .final { scroll-margin-top: 72px; }
 
-.dotnav { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 90; display: flex; flex-direction: column; gap: 16px; }
-.dotnav__item { position: relative; display: flex; align-items: center; justify-content: flex-end; height: 16px; text-decoration: none; }
-.dotnav__item:hover { text-decoration: none; }
-.dotnav__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); opacity: 0.4; transition: opacity var(--duration-fast) var(--ease-apple), transform var(--duration-fast) var(--ease-apple), box-shadow var(--duration-fast) var(--ease-apple); }
-.dotnav__item:hover .dotnav__dot { opacity: 0.85; transform: scale(1.25); }
-.dotnav__item.is-active .dotnav__dot { opacity: 1; transform: scale(1.4); box-shadow: 0 0 12px var(--accent-bright); background: var(--accent-bright); }
-.dotnav__label { position: absolute; right: 22px; white-space: nowrap; font-size: 0.78rem; color: var(--ink); background: rgba(18,16,24,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.12); padding: 5px 11px; border-radius: var(--radius-pill); opacity: 0; transform: translateX(8px); pointer-events: none; transition: opacity var(--duration-fast) var(--ease-apple), transform var(--duration-fast) var(--ease-apple); }
-.dotnav__item:hover .dotnav__label { opacity: 1; transform: translateX(0); }
-@media (max-width: 860px) { .dotnav { display: none; } }
-@media (prefers-reduced-motion: reduce) { .dotnav__dot { transition: none; } }
+.dotnav { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 90; display: flex; flex-direction: column; gap: 13px; }
+.dotnav__item { display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none; transform-origin: right center; transition: transform var(--duration-fast) var(--ease-apple); }
+.dotnav__item:hover { text-decoration: none; transform: scale(1.14); } /* cresce ao passar o mouse */
+/* rótulo SEMPRE visível, discreto; pílula glassy lê em fundo claro e escuro */
+.dotnav__label { order: 1; white-space: nowrap; font-size: 0.72rem; letter-spacing: 0.01em; color: #fff; background: rgba(12,11,15,0.55); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); border: 1px solid rgba(255,255,255,0.12); padding: 4px 10px; border-radius: var(--radius-pill); opacity: 0.78; transition: opacity var(--duration-fast) var(--ease-apple), color var(--duration-fast) var(--ease-apple), border-color var(--duration-fast) var(--ease-apple); }
+.dotnav__item:hover .dotnav__label { opacity: 1; }
+.dotnav__item.is-active .dotnav__label { opacity: 1; color: var(--accent-bright); border-color: var(--accent); }
+.dotnav__dot { order: 2; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); opacity: 0.5; transition: opacity var(--duration-fast) var(--ease-apple), transform var(--duration-fast) var(--ease-apple), box-shadow var(--duration-fast) var(--ease-apple); }
+.dotnav__item.is-active .dotnav__dot { opacity: 1; transform: scale(1.5); box-shadow: 0 0 12px var(--accent-bright); background: var(--accent-bright); }
+/* Mobile: trilha discreta só com pontos (toque pra pular) */
+@media (max-width: 860px) {
+  .dotnav { right: 9px; gap: 11px; }
+  .dotnav__label { display: none; }
+  .dotnav__dot { width: 7px; height: 7px; }
+}
+@media (prefers-reduced-motion: reduce) { .dotnav__item, .dotnav__dot { transition: none; } }
