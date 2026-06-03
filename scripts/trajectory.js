@@ -83,6 +83,12 @@
       if (i === LP.trajSelected) return; // já selecionada
       LP.selectTraj(i);
       LP.track("Trajectory Select", { company: LP._trajData[i] && LP._trajData[i].name });
+      // puxa a página até a descrição (o topo do painel é estável durante a animação)
+      var detail = document.getElementById("traj-detail");
+      if (detail) {
+        var top = detail.getBoundingClientRect().top + window.scrollY - 84;
+        window.scrollTo({ top: top, behavior: reduce ? "auto" : "smooth" });
+      }
     });
 
     if (reduce) return;
