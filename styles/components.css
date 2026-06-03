@@ -150,3 +150,34 @@
 .kpi__value { font-weight: 700; letter-spacing: -0.04em; }
 .marquee__track span { font-weight: 500; }
 .monogram { font-weight: 700; }
+
+/* ============================================================
+   Retrato 3D (Sobre) — recorte sem fundo, halo violeta, parallax
+   ============================================================ */
+.portrait { position: relative; width: 100%; max-width: 330px; margin-inline: auto; aspect-ratio: 420 / 480; perspective: 1000px; }
+.portrait__inner { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform var(--duration-fast) var(--ease-out-expo); }
+.portrait__glow {
+  position: absolute; left: 50%; top: 42%; width: 122%; aspect-ratio: 1;
+  transform: translate(-50%, -50%) translateZ(-30px); border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(124,92,255,0.55), rgba(54,224,196,0.12) 56%, transparent 74%);
+  filter: blur(16px); z-index: 0;
+  animation: breathe 6.5s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,100% { opacity: 0.7; transform: translate(-50%,-50%) translateZ(-30px) scale(1); }
+  50%     { opacity: 1;   transform: translate(-50%,-50%) translateZ(-30px) scale(1.07); }
+}
+.portrait__ring {
+  position: absolute; left: 50%; top: 44%; width: 100%; aspect-ratio: 1;
+  transform: translate(-50%, -50%) translateZ(-10px); border-radius: 50%;
+  border: 1px solid rgba(124,92,255,0.3); box-shadow: inset 0 0 50px rgba(124,92,255,0.12);
+  z-index: 1;
+}
+.portrait__img {
+  position: relative; z-index: 2; width: 100%; height: auto; display: block;
+  transform: translateZ(55px);
+  filter: drop-shadow(0 28px 40px rgba(0,0,0,0.6));
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 99%);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 99%);
+}
+@media (prefers-reduced-motion: reduce) { .portrait__glow { animation: none; } }

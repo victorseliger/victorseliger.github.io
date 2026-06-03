@@ -61,6 +61,22 @@
     requestAnimationFrame(tick);
   }
 
+  /* ---- Tilt 3D genérico ([data-tilt]) — retrato do Sobre ---- */
+  LP.initTilt = function () {
+    if (reduce) return;
+    document.querySelectorAll("[data-tilt]").forEach(function (el) {
+      var inner = el.querySelector(".portrait__inner") || el;
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var nx = (e.clientX - r.left) / r.width - 0.5;
+        var ny = (e.clientY - r.top) / r.height - 0.5;
+        inner.style.transform =
+          "rotateY(" + (nx * 14).toFixed(2) + "deg) rotateX(" + (-ny * 14).toFixed(2) + "deg)";
+      });
+      el.addEventListener("pointerleave", function () { inner.style.transform = ""; });
+    });
+  };
+
   LP.observeKpis = function () {
     var vals = [].slice.call(document.querySelectorAll(".kpi__value"));
     if (!vals.length) return;

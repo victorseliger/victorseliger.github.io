@@ -111,10 +111,14 @@
       <div class="container">
         <h2 class="section__header reveal" id="about-title" data-bind="about.section_title"></h2>
         <div class="about__grid reveal">
-          <div>
-            <img class="about__photo" src="assets/photo-victor.webp"
-                 width="512" height="512" loading="lazy" decoding="async"
-                 data-bind-alt="about.photo_alt" alt="Victor Seliger" />
+          <div class="portrait" data-tilt>
+            <div class="portrait__inner">
+              <span class="portrait__glow" aria-hidden="true"></span>
+              <span class="portrait__ring" aria-hidden="true"></span>
+              <img class="portrait__img" src="assets/photo-victor-cut.webp"
+                   width="420" height="480" loading="lazy" decoding="async"
+                   data-bind-alt="about.photo_alt" alt="Victor Seliger" />
+            </div>
           </div>
           <div>
             <p class="about__identity" data-bind="about.identity_line"></p>
