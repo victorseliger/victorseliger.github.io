@@ -129,3 +129,24 @@
 .final__cta-sub { font-size: var(--text-small); color: var(--t-tertiary); }
 .final__cta-row .cta { min-width: 260px; }
 .final__signature { margin-top: var(--space-16); font-family: var(--font-serif); font-style: italic; color: var(--t-secondary); font-size: var(--text-subhead); }
+
+/* ============================================================
+   Fonte do nome/títulos: Space Grotesk em pé (escolha do Victor).
+   Override final — converte os antigos display "serif" pra grotesk.
+   ============================================================ */
+.hero__name, .section__header, .section__header em, .about__identity,
+.what__headline, .ai__manifesto, .kpi__value, .proof__text,
+.final__p1, .final__signature, .traj-detail__company, .logo3d__mark,
+.logo-tile__name, .accordion__title, .panel__role, .marquee__track span,
+.monogram {
+  font-family: var(--font-grotesk);
+  font-style: normal;
+}
+.hero__name { font-weight: 700; letter-spacing: -0.035em; }
+.section__header { font-weight: 600; letter-spacing: -0.03em; }
+.section__header em { font-weight: 600; }
+.what__headline, .ai__manifesto, .final__p1 { font-weight: 600; letter-spacing: -0.025em; }
+.about__identity, .accordion__title, .panel__role, .logo-tile__name, .traj-detail__company { font-weight: 600; letter-spacing: -0.02em; }
+.kpi__value { font-weight: 700; letter-spacing: -0.04em; }
+.marquee__track span { font-weight: 500; }
+.monogram { font-weight: 700; }

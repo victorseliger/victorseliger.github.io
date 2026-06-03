@@ -6,8 +6,8 @@
 
 :root {
   /* ---- Fontes ---- */
-  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --font-grotesk: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-grotesk); /* nome/títulos agora em Space Grotesk (escolha do Victor) */
 
   /* ---- Paleta base ---- */
   --bg: #0c0b0f;            /* preto quente — base global */
