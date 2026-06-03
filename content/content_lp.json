@@ -22,6 +22,8 @@
       "lang_toggle_aria": "Trocar idioma"
     },
 
+    "nav": { "start": "Início", "contact": "Contato" },
+
     "hero": {
       "promise_line1": "Essa página foi feita pra você ler em 3 minutos.",
       "promise_line2": "E sair sabendo se vale a conversa.",
@@ -321,6 +323,8 @@
       "cta_secondary": "WhatsApp",
       "lang_toggle_aria": "Switch language"
     },
+
+    "nav": { "start": "Start", "contact": "Contact" },
 
     "hero": {
       "promise_line1": "This page was built for you to read in 3 minutes.",

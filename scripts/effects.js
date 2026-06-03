@@ -61,6 +61,26 @@
     requestAnimationFrame(tick);
   }
 
+  /* ---- Trilha de navegação: scroll-spy ---- */
+  LP.initDotNav = function () {
+    var items = [].slice.call(document.querySelectorAll(".dotnav__item"));
+    if (!items.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    items.forEach(function (a) {
+      var t = document.getElementById(a.getAttribute("data-spy"));
+      if (t) map[t.id] = a;
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          items.forEach(function (a) { a.classList.remove("is-active"); });
+          if (map[e.target.id]) map[e.target.id].classList.add("is-active");
+        }
+      });
+    }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+  };
+
   /* ---- Tilt 3D genérico ([data-tilt]) — retrato do Sobre ---- */
   LP.initTilt = function () {
     if (reduce) return;

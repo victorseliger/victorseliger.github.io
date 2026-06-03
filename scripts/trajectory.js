@@ -1,14 +1,15 @@
 /* ============================================================
-   trajectory.js — Logos 3D selecionáveis. O tile selecionado
-   cresce (os outros encolhem); o painel de detalhe recolhe o
-   anterior e expande o novo com animação. Tilt 3D no ponteiro.
+   trajectory.js — Logos selecionáveis. Tile cresce/encolhe; o
+   painel transiciona suavemente da altura antiga p/ a nova
+   (sem colapsar a zero) e, no clique, rola até o painel depois
+   que o conteúdo assenta. Tilt 3D no ponteiro.
    ============================================================ */
 (function () {
   "use strict";
   window.LP = window.LP || {};
 
   LP.trajSelected = 0;
-  var DUR = 340;
+  var DUR = 360;
   var animToken = 0;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -26,7 +27,14 @@
     });
   }
 
-  LP.selectTraj = function (i) {
+  function scrollToDetail(detail) {
+    var bar = document.querySelector(".topbar");
+    var off = (bar ? bar.offsetHeight : 60) + 16;
+    var top = detail.getBoundingClientRect().top + window.scrollY - off;
+    window.scrollTo({ top: top, behavior: reduce ? "auto" : "smooth" });
+  }
+
+  LP.selectTraj = function (i, doScroll) {
     var container = document.querySelector("[data-trajectory]");
     if (!container || !LP._trajData || !LP._trajData[i]) return;
     LP.trajSelected = i;
@@ -35,41 +43,36 @@
     var detail = document.getElementById("traj-detail");
     if (!detail || !LP.trajectoryDetailHtml) return;
     var html = LP.trajectoryDetailHtml(LP._trajData[i]);
+    var empty = !detail.innerHTML.trim();
 
-    if (reduce) {
+    if (reduce || empty) {
       detail.innerHTML = html;
       detail.style.maxHeight = "none";
       detail.style.opacity = "1";
+      if (doScroll) scrollToDetail(detail);
       return;
     }
 
     animToken += 1;
     var my = animToken;
+    var h0 = detail.offsetHeight;
+    detail.style.maxHeight = h0 + "px";
+    detail.style.opacity = "0";
 
-    function expand() {
+    setTimeout(function () {
       if (my !== animToken) return;
       detail.innerHTML = html;
-      detail.style.maxHeight = "0px";
-      detail.style.opacity = "0";
+      detail.style.maxHeight = "none";
+      var h1 = detail.offsetHeight; // altura natural do novo conteúdo
+      detail.style.maxHeight = h0 + "px";
       void detail.offsetHeight; // reflow
-      detail.style.maxHeight = detail.scrollHeight + "px";
+      detail.style.maxHeight = h1 + "px"; // anima altura antiga → nova
       detail.style.opacity = "1";
+      if (doScroll) scrollToDetail(detail); // página já tem altura final → scroll não trava
       setTimeout(function () {
         if (my === animToken) detail.style.maxHeight = "none";
       }, DUR);
-    }
-
-    if (detail.innerHTML.trim()) {
-      // recolhe o atual, depois troca e expande
-      detail.style.maxHeight = detail.scrollHeight + "px";
-      detail.style.opacity = "1";
-      void detail.offsetHeight;
-      detail.style.maxHeight = "0px";
-      detail.style.opacity = "0";
-      setTimeout(expand, DUR);
-    } else {
-      expand();
-    }
+    }, 170);
   };
 
   LP.initTrajectory = function () {
@@ -80,15 +83,9 @@
       var tile = e.target.closest(".logo-tile");
       if (!tile || !container.contains(tile)) return;
       var i = parseInt(tile.getAttribute("data-traj-index"), 10);
-      if (i === LP.trajSelected) return; // já selecionada
-      LP.selectTraj(i);
+      if (i === LP.trajSelected) return;
+      LP.selectTraj(i, true);
       LP.track("Trajectory Select", { company: LP._trajData[i] && LP._trajData[i].name });
-      // puxa a página até a descrição (o topo do painel é estável durante a animação)
-      var detail = document.getElementById("traj-detail");
-      if (detail) {
-        var top = detail.getBoundingClientRect().top + window.scrollY - 84;
-        window.scrollTo({ top: top, behavior: reduce ? "auto" : "smooth" });
-      }
     });
 
     if (reduce) return;
