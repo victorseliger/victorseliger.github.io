@@ -241,3 +241,38 @@
   .dotnav__dot { width: 7px; height: 7px; }
 }
 @media (prefers-reduced-motion: reduce) { .dotnav__item, .dotnav__dot { transition: none; } }
+
+/* ============================================================
+   Contato — pergunta de fit (Sim/Não) + respostas
+   ============================================================ */
+.fit { margin-top: var(--space-12); }
+.fit__question { font-weight: 600; letter-spacing: -0.02em; font-size: var(--text-statement); line-height: var(--leading-snug); max-width: 22ch; margin-inline: auto; color: var(--t-primary); }
+.fit__choices { margin-top: var(--space-8); display: flex; justify-content: center; gap: var(--space-4); }
+.fit__btn { min-width: 132px; background: var(--surface-2); color: var(--t-primary); border: 1px solid var(--surface-line); box-shadow: none; }
+.fit__btn:hover { border-color: var(--accent-bright); color: var(--accent-bright); transform: translateY(-2px); }
+.fit__btn.is-chosen { background: linear-gradient(135deg, var(--accent-bright), var(--accent-deep)); color: #fff; border-color: transparent; box-shadow: var(--glow-accent); }
+.fit__btn.is-chosen:hover { color: #fff; }
+.fit__response[hidden] { display: none; }
+.fit__response { margin-top: var(--space-10); opacity: 0; transform: translateY(10px); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.fit__response.is-in { opacity: 1; transform: none; }
+.fit__msg { font-size: var(--text-lead); color: var(--t-secondary); max-width: 52ch; margin-inline: auto; line-height: var(--leading-relaxed); }
+.fit__response .final__ctas { margin-top: var(--space-8); }
+.fit__response > .final__cta-row { margin-top: var(--space-8); display: flex; justify-content: center; }
+
+/* ============================================================
+   Skin in the game
+   ============================================================ */
+.skin__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); margin-bottom: var(--space-16); }
+@media (max-width: 760px) { .skin__grid { grid-template-columns: 1fr; gap: var(--space-10); } }
+.skin__list { display: grid; gap: var(--space-3); }
+.skin__list li { position: relative; padding-left: 1.5em; color: var(--t-secondary); line-height: var(--leading-normal); max-width: 52ch; }
+.skin__list li::before { content: "\2192"; position: absolute; left: 0; color: var(--accent-bright); }
+.skin__arch { margin-bottom: var(--space-16); }
+.skin__arch-item { display: flex; align-items: baseline; gap: var(--space-5); padding: var(--space-4) 0; border-top: var(--hairline) solid var(--t-line); }
+.skin__arch-item:last-child { border-bottom: var(--hairline) solid var(--t-line); }
+.skin__weight { flex-shrink: 0; width: 62px; font-weight: 700; font-size: var(--text-subhead); color: var(--accent-bright); letter-spacing: -0.02em; }
+.skin__arch-text { color: var(--t-secondary); line-height: var(--leading-normal); max-width: 60ch; }
+.skin__stat { display: flex; align-items: center; gap: var(--space-6); padding: var(--space-8); border-radius: var(--radius-card-lg); background: var(--surface); border: var(--hairline) solid var(--surface-line); }
+.skin__stat-value { flex-shrink: 0; font-weight: 700; font-size: var(--text-kpi); letter-spacing: -0.03em; line-height: 1; white-space: nowrap; background: linear-gradient(150deg, #fff 20%, var(--accent-bright) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.skin__stat-label { color: var(--t-secondary); font-size: var(--text-lead); line-height: var(--leading-snug); }
+@media (max-width: 600px) { .skin__stat { flex-direction: column; align-items: flex-start; gap: var(--space-4); } }

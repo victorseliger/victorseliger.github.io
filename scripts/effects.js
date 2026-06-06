@@ -61,6 +61,24 @@
     requestAnimationFrame(tick);
   }
 
+  /* ---- Pergunta de fit (Sim/Não) no Contato ---- */
+  LP.initFit = function () {
+    var fit = document.getElementById("fit");
+    if (!fit) return;
+    var yes = document.getElementById("fit-yes");
+    var no = document.getElementById("fit-no");
+    function show(el) { if (!el) return; el.hidden = false; requestAnimationFrame(function () { el.classList.add("is-in"); }); }
+    function hide(el) { if (!el) return; el.classList.remove("is-in"); el.hidden = true; }
+    fit.querySelectorAll("[data-fit]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var choice = btn.getAttribute("data-fit");
+        fit.querySelectorAll(".fit__btn").forEach(function (b) { b.classList.toggle("is-chosen", b === btn); });
+        if (choice === "yes") { show(yes); hide(no); } else { show(no); hide(yes); }
+        if (LP.track) LP.track("Fit", { choice: choice });
+      });
+    });
+  };
+
   /* ---- Trilha de navegação: scroll-spy ---- */
   LP.initDotNav = function () {
     var items = [].slice.call(document.querySelectorAll(".dotnav__item"));

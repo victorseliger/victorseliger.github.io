@@ -22,7 +22,7 @@
       "lang_toggle_aria": "Trocar idioma"
     },
 
-    "nav": { "start": "Início", "about": "Sobre", "traj": "Trajetória", "what": "O que faço", "ai": "IA", "stack": "Stack", "obj": "Objetivo", "contact": "Contato" },
+    "nav": { "start": "Início", "about": "Sobre", "traj": "Trajetória", "what": "O que faço", "ai": "IA", "stack": "Stack", "obj": "Objetivo", "contact": "Contato", "skin": "Bastidores" },
 
     "hero": {
       "promise_line1": "Essa página foi feita pra você ler em 3 minutos.",
@@ -292,6 +292,12 @@
       "p2_line1": "LinkedIn Recruiter. Hiring Assistant. AI-Assisted Messages.",
       "p2_line2": "3 minutos por candidato qualificado.",
       "p3": "Esses 3 minutos são caros. Tentei caber neles.",
+      "fit_question": "E aí — do que eu apresentei, tenho fit com a sua oportunidade?",
+      "yes_label": "Sim",
+      "no_label": "Não",
+      "yes_response": "Perfeito — 75% do processo de recrutamento já está encaminhado. O próximo passo é você me apresentar a oportunidade e a gente alinhar um bate-papo.",
+      "no_response": "Acredita ser produtivo me acompanhar no LinkedIn? Tech recruiters precisam de perfis variados — e você certamente acertou em cheio em me conhecer.",
+      "connect_label": "Conectar no LinkedIn",
       "next_step_label": "Próximo passo",
       "primary_cta": {
         "label": "InMail",
@@ -302,6 +308,35 @@
         "subtext": "atalho · responde em até 5 min"
       },
       "signature": "— Victor"
+    },
+
+    "skin": {
+      "section_title": "Skin in the game",
+      "intro": "Fiz essa página aplicando, em mim, o mesmo método de implantação com foco no cliente que entrego no trabalho.",
+      "research_label": "Fase de pesquisa",
+      "research": [
+        "O que me conecta ao recrutador?",
+        "O que o recrutador precisa saber?",
+        "Quanto tempo ele leva pra tomar uma decisão?",
+        "Quanto tempo, no máximo, ele leva pra avaliar um perfil?"
+      ],
+      "answers_label": "Respostas relevantes",
+      "answers": [
+        "O motor de IA conecta recrutador e candidato por cargo, skills e palavras-chave.",
+        "Lei dos 6 segundos — é o tempo de decisão na triagem.",
+        "Tempo máximo de avaliação de um perfil: 3 minutos.",
+        "Vale criar gatilho de retorno à plataforma (LinkedIn Recruiter, Hiring Assistant…).",
+        "O LinkedIn já entrega mensagens pré-prontas; é no InMail que o recrutador toca o dia a dia."
+      ],
+      "architecture_label": "Arquitetura voltada à jornada do recrutador",
+      "architecture": [
+        { "weight": "40%", "text": "Palavras-chave conectam a busca e as IAs ao meu perfil no LinkedIn — fazem ele aparecer nas vagas mais relevantes pra mim." },
+        { "weight": "40%", "text": "Cargo e skills à primeira vista — a primeira impressão." },
+        { "weight": "20%", "text": "Perfil resumido — cria conexão e o gatilho de curiosidade." },
+        { "weight": "+", "text": "Link desta página com a experiência completa." }
+      ],
+      "stat_value": "3 min",
+      "stat_label": "90% dos Tech Recruiters levam no máximo 3 minutos para ler um perfil por completo."
     },
 
     "footer": {
@@ -324,7 +359,7 @@
       "lang_toggle_aria": "Switch language"
     },
 
-    "nav": { "start": "Start", "about": "About", "traj": "Trajectory", "what": "What I do", "ai": "AI", "stack": "Stack", "obj": "Goal", "contact": "Contact" },
+    "nav": { "start": "Start", "about": "About", "traj": "Trajectory", "what": "What I do", "ai": "AI", "stack": "Stack", "obj": "Goal", "contact": "Contact", "skin": "Behind" },
 
     "hero": {
       "promise_line1": "This page was built for you to read in 3 minutes.",
@@ -594,6 +629,12 @@
       "p2_line1": "LinkedIn Recruiter. Hiring Assistant. AI-Assisted Messages.",
       "p2_line2": "3 minutes per qualified candidate.",
       "p3": "These 3 minutes are expensive. I tried to fit in them.",
+      "fit_question": "So — from what I showed, am I a fit for your opportunity?",
+      "yes_label": "Yes",
+      "no_label": "No",
+      "yes_response": "Perfect — 75% of the recruiting process is already underway. The next step is for you to tell me about the opportunity and line up a chat.",
+      "no_response": "Think it's worth following me on LinkedIn? Tech recruiters need all kinds of profiles — and you definitely did well getting to know me.",
+      "connect_label": "Connect on LinkedIn",
       "next_step_label": "Next step",
       "primary_cta": {
         "label": "InMail",
@@ -604,6 +645,35 @@
         "subtext": "shortcut · responds in up to 5 min"
       },
       "signature": "— Victor"
+    },
+
+    "skin": {
+      "section_title": "Skin in the game",
+      "intro": "I built this page applying to myself the same client-focused implementation method I deliver at work.",
+      "research_label": "Research phase",
+      "research": [
+        "What connects me to the recruiter?",
+        "What does the recruiter need to know?",
+        "How long do they take to decide?",
+        "What's the maximum time they spend evaluating a profile?"
+      ],
+      "answers_label": "Relevant answers",
+      "answers": [
+        "The AI engine matches recruiter and candidate by role, skills and keywords.",
+        "The 6-second rule — that's the screening decision time.",
+        "Maximum time to evaluate a profile: 3 minutes.",
+        "Worth building a trigger to return to the platform (LinkedIn Recruiter, Hiring Assistant…).",
+        "LinkedIn already serves canned messages; it's on InMail that recruiters run their day."
+      ],
+      "architecture_label": "Architecture built around the recruiter's journey",
+      "architecture": [
+        { "weight": "40%", "text": "Keywords connect search and AIs to my LinkedIn profile — making it surface in the most relevant roles." },
+        { "weight": "40%", "text": "Role and skills at a glance — the first impression." },
+        { "weight": "20%", "text": "A tight summary — builds connection and the curiosity trigger." },
+        { "weight": "+", "text": "A link to this page with the full experience." }
+      ],
+      "stat_value": "3 min",
+      "stat_label": "90% of tech recruiters spend at most 3 minutes reading a profile in full."
     },
 
     "footer": {

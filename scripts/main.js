@@ -18,6 +18,7 @@
         LP.initAccordions();
         LP.initTrajectory();
         LP.initTilt();
+        LP.initFit();
         LP.initDotNav();
         LP.initNavScroll();
         LP.initReveal();

@@ -217,6 +217,17 @@
         })
         .join("");
     }
+
+    if (content.skin) {
+      var sr = document.getElementById("skin-research");
+      if (sr) sr.innerHTML = content.skin.research.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
+      var sa = document.getElementById("skin-answers");
+      if (sa) sa.innerHTML = content.skin.answers.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
+      var sarch = document.getElementById("skin-arch");
+      if (sarch) sarch.innerHTML = content.skin.architecture.map(function (a) {
+        return '<div class="skin__arch-item"><span class="skin__weight">' + esc(a.weight) + '</span><span class="skin__arch-text">' + esc(a.text) + "</span></div>";
+      }).join("");
+    }
   }
 
   /* ---- binds estáticos via [data-bind] ---- */
@@ -247,6 +258,7 @@
     document.querySelectorAll('[data-cta="inmail"]').forEach(function (a) { a.href = linkedin; });
     document.querySelectorAll('[data-cta="whatsapp"]').forEach(function (a) { a.href = wa; });
     document.querySelectorAll('[data-cta="repo"]').forEach(function (a) { a.href = repo; });
+    document.querySelectorAll('[data-cta="connect"]').forEach(function (a) { a.href = linkedin; });
   }
 
   /* ---- meta ---- */
