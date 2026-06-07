@@ -1,0 +1,593 @@
+/* ============================================================
+   v2.css — camada de refino sobre tokens/main/components.
+   Aplica P1 (snapshot, KPIs enxutos), P2 (timeline, contraste,
+   CTA) e P3 (fallback sem-JS). Não altera os arquivos base.
+   ============================================================ */
+
+/* ---- P2/P3: contraste — clareia secundário/terciário no escuro ---- */
+:root {
+  --ink-dim: #c3bdce;      /* era #a8a1b2 */
+  --ink-faint: #968fa4;    /* era #726c7e */
+}
+.theme-cream {
+  --t-secondary: #45404f;  /* era #534d5e */
+  --t-tertiary: #6f6a78;   /* era #8b8694 */
+}
+
+/* ---- P3: fallback sem-JS — base já esconde .reveal (JS revela);
+   aqui só garantimos que SEM JS tudo apareça ---- */
+html:not(.js) .reveal { opacity: 1 !important; transform: none !important; }
+
+/* ============================================================
+   Hero — nome instantâneo (sem typewriter)
+   ============================================================ */
+.hero__name { max-width: 18ch; }
+.hero__fastcue {
+  margin-top: var(--space-8);
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-small); color: var(--ink-dim);
+  letter-spacing: 0.01em;
+}
+.hero__fastcue .arrow {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid var(--t-line-strong); color: var(--accent-bright);
+  display: inline-flex; align-items: center; justify-content: center;
+  animation: cue 2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .hero__fastcue .arrow { animation: none; } }
+.hero__fastcue a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--t-line-strong); }
+.hero__fastcue a:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+
+/* ---- eyebrow numa linha só ---- */
+.hero__eyebrow { white-space: nowrap; }
+
+/* botão só com ícone (GitHub / WhatsApp no header) */
+.cta--icon { padding: 8px; min-width: 0; gap: 0; }
+.topbar .cta--icon { padding: 8px; }
+.cta--icon .cta__label { display: none !important; }
+.cta--icon .cta__icon { width: 18px; height: 18px; }
+/* mobile: labels do header somem (vira ícone). Perfil e InMail usam o
+   mesmo ícone do LinkedIn → ocultamos o InMail (redundante, mesmo destino)
+   pra não ter dois ícones idênticos. Ele segue disponível no Contato. */
+@media (max-width: 600px) {
+  .topbar [data-cta="inmail"] { display: none; }
+}
+
+/* ---- promise com cronômetro inline ---- */
+.hero__promise {
+  display: flex; align-items: center; gap: var(--space-4);
+  flex-wrap: nowrap; max-width: 30ch;
+}
+.hero__promise-clock {
+  flex-shrink: 0; width: 2.4em; height: 2.4em;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--accent-bright);
+}
+.hero__promise-clock svg { width: 100%; height: 100%; }
+.hero__promise-hand { transform-origin: 12px 13px; animation: heroClock 3s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .hero__promise-hand { animation: none; } }
+@keyframes heroClock { to { transform: rotate(360deg); } }
+
+/* ---- specs rotuladas (Local / Disponibilidade / Regimes / Experiência) ---- */
+.hero__specs {
+  margin-top: var(--space-8);
+  display: grid; grid-template-columns: auto 1fr;
+  gap: var(--space-3) var(--space-6);
+  max-width: 52ch;
+}
+.hero__spec-label {
+  font-size: var(--text-eyebrow); letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase; color: var(--accent-bright); font-weight: var(--weight-semibold);
+  align-self: center; white-space: nowrap;
+}
+.hero__spec-value {
+  margin: 0; font-size: var(--text-small); color: var(--ink); line-height: var(--leading-snug);
+  padding-left: var(--space-6); border-left: var(--hairline) solid var(--t-line);
+}
+@media (max-width: 520px) {
+  .hero__specs { grid-template-columns: 1fr; gap: var(--space-1) var(--space-4); }
+  .hero__spec-value { padding-left: 0; border-left: 0; margin-bottom: var(--space-3); }
+  .hero__spec-label { margin-top: var(--space-2); }
+}
+
+/* ============================================================
+   P1 — Banda "Os 3 minutos" (resumo executivo)
+   ============================================================ */
+.snapshot {
+  position: relative;
+  background: linear-gradient(180deg, #110d1c 0%, #0c0b0f 100%);
+  border-block: var(--hairline) solid var(--t-line);
+  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+  overflow: hidden;
+}
+.snapshot::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 60% at 12% 0%, rgba(124,92,255,0.16), transparent 60%),
+    radial-gradient(50% 60% at 95% 100%, rgba(54,224,196,0.08), transparent 60%);
+}
+.snapshot .container { position: relative; z-index: 1; }
+.snapshot__label {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-eyebrow); letter-spacing: var(--tracking-eyebrow);
+  color: var(--accent-bright); margin-bottom: var(--space-5);
+}
+.snapshot__label::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+.snapshot__headline {
+  font-weight: 600; letter-spacing: -0.025em;
+  font-size: var(--text-statement); line-height: var(--leading-tight);
+  color: var(--ink); max-width: 24ch;
+}
+.snapshot__sub {
+  margin-top: var(--space-5); max-width: 62ch;
+  font-size: var(--text-lead); line-height: var(--leading-relaxed); color: var(--ink-dim);
+}
+/* leitura dinâmica — termos-chave reforçados.
+   Título: texto de ligação atenuado, termos-chave em destaque pleno,
+   pra quem passa o olho ler só o que importa. */
+.snapshot__headline { color: var(--ink-faint); }
+.snapshot__headline strong {
+  font-weight: inherit; color: transparent;
+  background: linear-gradient(110deg, #fff 0%, #d6c9ff 45%, #7fe9d6 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+/* underscore piscante estilo cursor — chama atenção ao fim da 1ª linha */
+.blink-cursor {
+  display: inline-block; margin-left: 0.06em;
+  color: var(--accent-2); font-weight: 400;
+  -webkit-text-fill-color: var(--accent-2);
+  text-shadow: 0 0 12px var(--accent-2);
+  animation: cursorBlink 1.05s steps(1) infinite;
+}
+/* segunda linha do título — um degrau menor que a primeira */
+.snapshot__headline-2 {
+  display: block; margin-top: 0.12em;
+  font-size: 0.78em; line-height: var(--leading-snug);
+}
+@keyframes cursorBlink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .blink-cursor { animation: none; } }
+.snapshot__sub strong {
+  color: var(--ink); font-weight: 600;
+  box-shadow: inset 0 -0.42em 0 color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.snapshot__proofs-label, .snapshot__looking-label {
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-eyebrow); color: var(--accent-bright);
+  margin: var(--space-12) 0 var(--space-5);
+}
+.snapshot__looking-label { font-size: var(--text-eyebrow); }
+/* "Por que vale a conversa" — quase um subtítulo, um degrau acima do eyebrow */
+.snapshot__proofs-label {
+  font-size: var(--text-subhead); letter-spacing: -0.01em;
+  text-transform: none;
+}
+.snapshot__proofs { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.proof-card {
+  position: relative; padding: var(--space-6);
+  border: var(--hairline) solid var(--surface-line); border-radius: var(--radius-card);
+  background: rgba(255,255,255,0.035);
+  transition: border-color var(--duration-normal) var(--ease-apple), transform var(--duration-normal) var(--ease-apple);
+}
+.proof-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.proof-card__k {
+  font-family: var(--font-grotesk); font-weight: 700; font-size: 0.78rem;
+  color: var(--accent-bright); letter-spacing: 0.06em; opacity: 0.8;
+}
+.proof-card__t {
+  margin-top: var(--space-3); font-weight: 600; letter-spacing: -0.015em;
+  font-size: var(--text-subhead); line-height: var(--leading-snug); color: var(--ink);
+}
+.proof-card__d { margin-top: var(--space-3); font-size: var(--text-small); line-height: var(--leading-normal); color: var(--ink-dim); }
+
+.snapshot__looking { margin-top: var(--space-12); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+.snapshot__looking-label { margin: 0 var(--space-2) 0 0; }
+.role-chip {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: 9px 16px; border-radius: var(--radius-pill);
+  border: var(--hairline) solid var(--t-line-strong); background: rgba(255,255,255,0.05);
+  font-size: var(--text-small); color: var(--ink); font-weight: var(--weight-medium);
+}
+.role-chip::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-2); box-shadow: 0 0 8px var(--accent-2);
+  animation: roleBlink 3.2s ease-in-out infinite;
+}
+@keyframes roleBlink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-2); }
+  50% { opacity: 0.32; box-shadow: 0 0 3px var(--accent-2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .role-chip::before { animation: none; }
+}
+
+.snapshot__foot { margin-top: var(--space-12); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); }
+.snapshot__deepen { font-size: var(--text-small); color: var(--ink-faint); }
+
+@media (max-width: 820px) {
+  .snapshot__proofs { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   P2 — Trajetória achatada: timeline de um nível
+   ============================================================ */
+.timeline { position: relative; display: grid; gap: var(--space-8); margin-left: 4px; }
+.timeline::before {
+  content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px;
+  background: linear-gradient(180deg, var(--t-line-strong), var(--t-line) 60%, transparent);
+}
+.tl-entry { position: relative; padding-left: var(--space-10); }
+.tl-entry__dot {
+  position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent-bright);
+  box-shadow: 0 0 0 4px var(--section-bg), 0 0 14px -2px var(--brand, var(--accent));
+}
+.tl-entry__dot { border-color: var(--brand, var(--accent-bright)); }
+.tl-entry__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); }
+.tl-entry__company {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-weight: 700; letter-spacing: -0.01em; font-size: var(--text-small);
+  color: var(--brand, var(--accent-bright));
+  padding: 4px 10px; border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--brand, var(--accent)) 12%, transparent);
+}
+.tl-entry__company img {
+  height: 18px; width: auto; display: block; flex-shrink: 0;
+}
+/* Itaú: quadrado laranja nativo (#EC7000) com "itaú" vazado — lê
+   perfeitamente sobre o chip escuro; jamais convertê-lo a branco */
+.tl-entry__company img[src$="logo-itau.svg"] { height: 22px; border-radius: 5px; }
+/* Dattos: wordmark azul-marinho (#091F68) + acento verde — invisível
+   no escuro, então recebe a placa branca da própria identidade */
+.tl-entry__company img[src*="dattos"] {
+  height: 13px; padding: 5px 7px; background: #fff;
+  border-radius: 6px; box-sizing: content-box;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+/* Itaú BBA: empresa distinta do grupo, com assinatura monocromática
+   própria. Usa o PNG oficial (versão branca: símbolo "itaú" + "BBA"),
+   completo, sem reconstrução. */
+.tl-entry__company--bba { gap: 9px; }
+.tl-entry__company--bba img { height: 26px; width: auto; display: block; }
+.tl-entry__period { font-size: var(--text-small); color: var(--t-tertiary); }
+
+/* --- cargo (role) dentro de uma empresa --- */
+.tl-role { margin-top: var(--space-5); }
+.tl-role:first-of-type { margin-top: var(--space-4); }
+.tl-role__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); }
+.tl-role__title {
+  font-weight: 600; letter-spacing: -0.02em;
+  font-size: var(--text-subhead); color: var(--t-primary);
+}
+.tl-role__period {
+  font-size: var(--text-small); color: var(--brand, var(--accent-bright));
+  font-family: var(--font-grotesk); opacity: 0.85;
+}
+/* empresa com mais de um cargo: marca cada cargo com um filete vertical
+   da cor da marca, deixando claro que são posições distintas */
+.tl-entry--multi .tl-role {
+  margin-top: var(--space-6);
+  padding-left: var(--space-5);
+  border-left: 2px solid color-mix(in srgb, var(--brand, var(--accent)) 35%, transparent);
+}
+
+.tl-entry__manifesto { margin-top: var(--space-2); font-size: var(--text-lead); line-height: var(--leading-snug); color: var(--t-secondary); max-width: 64ch; }
+.tl-entry__bullets { margin-top: var(--space-4); display: grid; gap: var(--space-2); }
+.tl-entry__bullets li { position: relative; padding-left: 1.5em; color: var(--t-secondary); line-height: var(--leading-normal); max-width: 66ch; font-size: var(--text-small); }
+.tl-entry__bullets li::before { content: "→"; position: absolute; left: 0; color: var(--brand, var(--accent-bright)); }
+.tl-entry__stack { margin-top: var(--space-4); font-size: var(--text-small); color: var(--t-tertiary); font-family: var(--font-grotesk); }
+.tl-entry__stack--company { margin-top: var(--space-6); padding-top: var(--space-4); border-top: var(--hairline) solid var(--surface-line); }
+
+/* --- projeto paralelo (aside) — ex.: consultoria Vantis durante o Itaú --- */
+.tl-aside {
+  margin-top: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-card);
+  border: var(--hairline) dashed var(--surface-line);
+  background: rgba(255,255,255,0.025);
+}
+.tl-aside__tag {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  font-size: var(--text-eyebrow); letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase; color: var(--t-tertiary); font-weight: var(--weight-semibold);
+}
+.tl-aside__tag::before { content: "⟂"; color: var(--accent-bright); font-weight: 700; }
+.tl-aside__head {
+  margin-top: var(--space-3);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3);
+}
+.tl-aside__company { font-weight: 700; letter-spacing: -0.01em; font-size: var(--text-small); color: var(--t-primary); }
+/* logo Vantis: wordmark preto chapado → branco para ler no escuro */
+.tl-aside__logo { height: 15px; width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.92; }
+.tl-aside__loc {
+  font-size: var(--text-eyebrow); color: var(--t-secondary);
+  padding: 2px 8px; border-radius: var(--radius-pill);
+  border: var(--hairline) solid var(--surface-line);
+}
+.tl-aside__period { font-size: var(--text-small); color: var(--t-tertiary); font-family: var(--font-grotesk); }
+.tl-aside__title { margin-top: var(--space-2); font-weight: 600; font-size: var(--text-small); color: var(--t-secondary); }
+.tl-aside__manifesto { margin-top: var(--space-2); font-size: var(--text-small); line-height: var(--leading-normal); color: var(--t-secondary); max-width: 64ch; }
+
+/* ============================================================
+   Contato — pergunta com máquina de escrever + botões Sim/Não
+   ============================================================ */
+.fit__question { min-height: 1.2em; }
+.fit__caret {
+  display: none; width: 0.5ch; height: 1.05em; margin-left: 3px;
+  background: var(--accent-2); border-radius: 1px;
+  vertical-align: -0.14em;
+}
+.fit__caret.is-typing { display: inline-block; animation: fitCaret 0.8s steps(1) infinite; }
+@keyframes fitCaret { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+.fit__qmark {
+  color: var(--accent-2); opacity: 0;
+  text-shadow: 0 0 14px color-mix(in srgb, var(--accent-2) 60%, transparent);
+}
+.fit__qmark.is-on { opacity: 1; animation: fitQmark 1.15s ease-in-out infinite; }
+@keyframes fitQmark { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+.fit__choices { align-items: center; }
+/* Sim — maior, em destaque (gradiente da marca) e pulsando lentamente */
+.fit__btn--yes {
+  min-width: 184px; font-size: 1.06rem; padding: 17px 32px;
+  background: linear-gradient(135deg, var(--accent-bright), var(--accent-deep));
+  color: #fff; border-color: transparent;
+  animation: fitYesPulse 2.6s ease-in-out infinite;
+}
+.fit__btn--yes:hover { color: #fff; transform: translateY(-2px); }
+@keyframes fitYesPulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  50% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--accent) 0%, transparent); }
+}
+/* Não — menor e mais discreto */
+.fit__btn--no {
+  min-width: 104px; font-size: 0.84rem; padding: 11px 18px; opacity: 0.78;
+}
+.fit__btn--no:hover { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .fit__caret.is-typing, .fit__qmark.is-on, .fit__btn--yes { animation: none; }
+}
+
+/* ============================================================
+   Bastidores — fases (Q&A pareado) + arquitetura
+   ============================================================ */
+.skin__phases-label {
+  margin-top: var(--space-8); margin-bottom: var(--space-2);
+  font-size: var(--text-lead); color: var(--t-secondary); font-weight: var(--weight-medium);
+}
+.skin__qa { display: grid; gap: var(--space-5); margin-bottom: var(--space-12); max-width: 72ch; }
+.skin__qa-item {
+  padding-left: var(--space-5);
+  border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.skin__q {
+  font-weight: 600; letter-spacing: -0.01em;
+  font-size: var(--text-subhead); line-height: var(--leading-snug); color: var(--t-primary);
+}
+.skin__q-num { color: var(--accent-bright); font-family: var(--font-grotesk); margin-right: 0.15em; }
+.skin__a {
+  margin-top: var(--space-2);
+  font-size: var(--text-small); line-height: var(--leading-normal); color: var(--t-secondary);
+}
+.skin__a::before { content: "→ "; color: var(--accent-bright); font-weight: 700; }
+/* "Arquitetura desenvolvida:" — um degrau maior que o panel__label padrão */
+.skin__arch-label {
+  font-size: var(--text-subhead) !important; text-transform: none !important;
+  letter-spacing: -0.01em !important; color: var(--t-primary) !important;
+  margin-bottom: var(--space-5) !important;
+}
+
+/* ============================================================
+   P1 — IA: prova viva elevada (não mais caixinha discreta)
+   ============================================================ */
+.proof--hero {
+  margin-top: var(--space-16); max-width: none;
+  padding: clamp(var(--space-8), 5vw, var(--space-12));
+  border-radius: var(--radius-card-lg);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(124,92,255,0.18), transparent 55%),
+    rgba(255,255,255,0.04);
+  border: var(--hairline) solid var(--accent);
+  display: flex; gap: var(--space-6); align-items: flex-start;
+}
+.proof--hero .proof__text {
+  font-weight: 600; font-style: normal; letter-spacing: -0.02em;
+  font-size: var(--text-statement); line-height: var(--leading-snug); color: var(--ink); max-width: 22ch;
+}
+.proof--hero .proof__label { font-size: var(--text-eyebrow); }
+.proof__beacon {
+  flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent-2); box-shadow: 0 0 0 4px rgba(54,224,196,0.18), 0 0 18px var(--accent-2);
+  margin-top: 10px; animation: beacon 2.4s ease-in-out infinite;
+}
+@keyframes beacon { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+@media (prefers-reduced-motion: reduce) { .proof__beacon { animation: none; } }
+@media (max-width: 600px) { .proof--hero { flex-direction: column; gap: var(--space-4); } }
+
+/* ============================================================
+   Stack / Objetivo — pequenos ajustes de leitura
+   ============================================================ */
+.stack-tech { font-size: var(--text-small); color: var(--t-secondary); margin-bottom: var(--space-2); line-height: var(--leading-normal); }
+
+/* ============================================================
+   P3 — Final: hierarquia clara de CTA + sub-rótulos
+   ============================================================ */
+.final__p2 { max-width: 52ch; margin-inline: auto; }
+.final__cta-row .cta { min-width: 240px; }
+
+/* fit-yes — par de botões LinkedIn + InMail, grupo WhatsApp, foto */
+.final__group { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); }
+.final__btn-pair { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
+.final__btn-pair .cta { min-width: 196px; }
+.fit__msg.is-typing::after {
+  content: ""; display: inline-block; width: 0.5ch; height: 1.05em;
+  margin-left: 2px; vertical-align: -0.14em; background: var(--accent-2);
+  border-radius: 1px; animation: fitCaret 0.8s steps(1) infinite;
+}
+.fit__msg { min-height: 1.4em; }
+/* foto de fechamento (mesma do Sobre, menor) */
+.final__photo { margin-top: var(--space-16); display: flex; justify-content: center; }
+.final__photo img {
+  width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: center top;
+  border: 1px solid var(--surface-line);
+  box-shadow: 0 0 0 4px rgba(124,92,255,0.10), 0 0 22px -6px var(--accent);
+}
+
+/* ============================================================
+   Cronômetro animado — bloco "3 min" (skin in the game)
+   Conta uma única vez (0:00 → 3:00) ao entrar na tela e PARA.
+   Anel + bead correm; leitura digital no centro. Sem loop.
+   Movimento controlado por JS (v2-app.js) e respeitando
+   prefers-reduced-motion.
+   ============================================================ */
+.clock { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); flex-shrink: 0; }
+.clock__svg { width: 138px; height: 138px; overflow: visible; }
+.clock__face { fill: rgba(255,255,255,0.02); stroke: var(--surface-line); stroke-width: 1.5; }
+.clock__ticks line { stroke: var(--ink-faint); stroke-width: 1.4; stroke-linecap: round; }
+.clock__ticks line.major { stroke: var(--ink-dim); stroke-width: 2.4; }
+.clock__track { fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 3.5; }
+.clock__progress {
+  fill: none; stroke: url(#clockGrad); stroke-width: 3.5; stroke-linecap: round;
+  transform: rotate(-90deg); transform-origin: 50% 50%;
+  stroke-dasharray: 251.327; stroke-dashoffset: 251.327;
+  filter: drop-shadow(0 0 4px rgba(124,92,255,0.5));
+}
+.clock__bead { fill: #fff; filter: drop-shadow(0 0 5px var(--accent-bright)); }
+.clock__readout {
+  font-family: var(--font-grotesk); font-weight: 700; font-size: 19px;
+  letter-spacing: -0.02em; fill: #fff;
+}
+/* estado final: cronômetro parado em 3:00 → muda para verde-água e ganha brilho */
+.clock.is-done .clock__progress { stroke: var(--accent-2); filter: drop-shadow(0 0 7px rgba(54,224,196,0.7)); }
+.clock.is-done .clock__bead { fill: var(--accent-2); filter: drop-shadow(0 0 7px var(--accent-2)); animation: beadStop 1.4s var(--ease-apple) 1; }
+.clock.is-done .clock__readout { fill: var(--accent-2); }
+@keyframes beadStop { 0% { r: 3.2; } 35% { r: 5.2; } 100% { r: 3.2; } }
+@media (prefers-reduced-motion: reduce) {
+  .clock.is-done .clock__bead { animation: none; }
+}
+
+/* termos reforçados na frase do dado — leitura dinâmica */
+.skin__stat-label strong {
+  color: var(--t-primary); font-weight: 700;
+  box-shadow: inset 0 -0.42em 0 color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* ============================================================
+   Sobre mim — ritmo respirado, frase-guia, anel 75%, fechamento
+   ============================================================ */
+.about__body { max-width: 60ch; }
+
+/* nome — linha própria, escala de destaque */
+.about__name {
+  font-weight: 600; letter-spacing: -0.025em;
+  font-size: clamp(1.9rem, 1.5rem + 1.8vw, 2.6rem); line-height: 1.05;
+  color: var(--t-primary);
+}
+/* local + idade — linha separada, fonte bem menor e discreta */
+.about__where {
+  margin-top: var(--space-3);
+  display: flex; align-items: center; gap: 0.5em;
+  font-size: var(--text-small); color: var(--t-tertiary); letter-spacing: 0.01em;
+}
+.about__where .about__sep { color: var(--t-line-strong); }
+.about__pin {
+  width: 1.05em; height: 1.05em; flex-shrink: 0;
+  color: var(--accent-bright); transform: translateY(-0.04em);
+}
+.about__family {
+  margin-top: var(--space-2) !important; color: var(--t-tertiary) !important;
+  font-size: var(--text-small) !important; letter-spacing: 0.01em;
+}
+
+/* frase-guia — declaração serif, o respiro de entrada.
+   Mais afastada do grupo-título (nome+local+família formam o título). */
+.about__lead {
+  margin-top: var(--space-16);
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.75rem);
+  line-height: var(--leading-tight); letter-spacing: -0.015em;
+  color: var(--t-secondary); text-wrap: balance;
+}
+.about__lead strong { color: var(--t-primary); font-weight: inherit; font-style: italic; }
+/* corpo — destaca os termos-chave para leitura dinâmica */
+.about__text {
+  margin-top: var(--space-6); max-width: 56ch;
+  font-size: var(--text-small); line-height: var(--leading-relaxed); color: var(--t-tertiary);
+}
+
+/* ---- stat 75% como anel de progresso (coeso com o cronômetro) ---- */
+.about__stat {
+  margin-top: var(--space-10);
+  display: grid; grid-template-columns: auto 1fr; align-items: center;
+  gap: clamp(var(--space-6), 3vw, var(--space-8));
+  padding: clamp(var(--space-6), 2.5vw, var(--space-8));
+  border: var(--hairline) solid var(--surface-line);
+  border-radius: var(--radius-card-lg);
+  background:
+    radial-gradient(120% 130% at 0% 0%, rgba(124,92,255,0.12), transparent 60%),
+    rgba(255,255,255,0.035);
+}
+.ring75 { position: relative; width: 132px; height: 132px; flex-shrink: 0; }
+.ring75__svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring75__track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 7; }
+.ring75__fill {
+  fill: none; stroke: url(#ringGrad); stroke-width: 7; stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(124,92,255,0.45));
+}
+.ring75__num {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: #fff;
+}
+.ring75__val {
+  font-family: var(--font-grotesk); font-weight: 700; letter-spacing: -0.04em;
+  font-size: 2.3rem; line-height: 1;
+}
+.ring75__pct {
+  font-size: 0.46em; font-weight: 600; color: var(--accent-2);
+  vertical-align: -0.15em; margin-left: 2px;
+}
+.about__stat-lead {
+  font-weight: 600; letter-spacing: -0.01em;
+  font-size: var(--text-subhead); line-height: var(--leading-snug); color: var(--t-primary);
+}
+.about__stat-text {
+  margin-top: var(--space-2);
+  font-size: var(--text-small); line-height: var(--leading-normal); color: var(--t-secondary);
+}
+.about__stat-text strong { color: var(--t-primary); font-weight: 600; }
+
+/* fechamento — a aposta */
+.about__text strong {
+  color: var(--t-primary); font-weight: 600;
+  box-shadow: inset 0 -0.4em 0 color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.about__bet {
+  margin-top: var(--space-8); max-width: 58ch;
+  font-size: var(--text-small); line-height: var(--leading-relaxed); color: var(--t-tertiary);
+}
+.about__bet strong {
+  color: var(--t-primary); font-weight: 600;
+  box-shadow: inset 0 -0.4em 0 color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.about__meta {
+  margin-top: var(--space-10) !important; padding-top: var(--space-8);
+}
+
+/* esconde a trilha lateral na seção Sobre — o texto largo encosta nela */
+.dotnav { transition: opacity var(--duration-normal) var(--ease-apple), transform var(--duration-normal) var(--ease-apple); }
+.dotnav.is-hidden { opacity: 0; transform: translateY(-50%) translateX(24px); pointer-events: none; }
+
+@media (max-width: 560px) {
+  .about__stat { grid-template-columns: 1fr; justify-items: start; gap: var(--space-5); }
+  .ring75 { width: 116px; height: 116px; }
+}
+
+/* ============================================================
+   Responsivo extra
+   ============================================================ */
+@media (max-width: 600px) {
+  .snapshot__foot { flex-direction: column; align-items: stretch; }
+  .snapshot__foot .cta { width: 100%; }
+}

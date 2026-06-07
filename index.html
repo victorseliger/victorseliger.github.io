@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Victor Seliger — Senior Implementation &amp; Solutions Engineer · AI-Native Delivery</title>
-  <meta name="description" content="Página feita pra você ler em 3 minutos e sair sabendo se vale a conversa. 9 anos em mercado financeiro, IA aplicada em produção." />
+  <meta name="description" content="9 anos em mercado financeiro, IA aplicada em produção. Página feita pra você ler em 3 minutos e sair sabendo se vale a conversa." />
   <meta name="author" content="Victor Seliger" />
   <meta name="theme-color" content="#0c0b0f" />
   <link rel="canonical" href="https://victorseliger.github.io/" />
 
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="Victor Seliger — Senior Implementation &amp; Solutions Engineer" />
-  <meta property="og:description" content="Página feita pra recrutador ler em 3 minutos e sair sabendo se vale a conversa." />
+  <meta property="og:description" content="9 anos em mercado financeiro, IA aplicada em produção. Feita pra ler em 3 minutos e sair sabendo se vale a conversa." />
   <meta property="og:url" content="https://victorseliger.github.io/" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:locale:alternate" content="en_US" />
@@ -20,10 +20,14 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
+  <!-- adiciona classe .js o quanto antes → fallback sem-JS mostra tudo -->
+  <script>document.documentElement.classList.add("js");</script>
+
   <link rel="stylesheet" href="styles/fonts.css" />
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/v2.css" />
 
   <script type="application/ld+json">
   {
@@ -38,9 +42,6 @@
     "knowsLanguage": ["pt-BR", "en", "es"]
   }
   </script>
-
-  <!-- ANALYTICS (Plausible) — INATIVO. Descomente e ajuste data-domain ao criar a conta.
-       <script defer data-domain="victorseliger.github.io" src="https://plausible.io/js/script.tagged-events.js"></script> -->
 </head>
 
 <body>
@@ -54,17 +55,23 @@
         <span class="topbar__name" data-bind="topbar.name">Victor Seliger</span>
       </div>
       <div class="topbar__actions">
-        <div class="lang-toggle" role="group" data-bind-aria-label="topbar.lang_toggle_aria">
+        <div class="lang-toggle" role="group" aria-label="Trocar idioma">
           <button class="lang-toggle__btn" data-lang-btn="pt" aria-pressed="true">PT</button>
           <button class="lang-toggle__btn" data-lang-btn="en" aria-pressed="false">EN</button>
         </div>
-        <a class="cta cta--primary" data-cta="inmail" target="_blank" rel="noopener" href="#">
+        <a class="cta cta--primary" data-cta="linkedin" target="_blank" rel="noopener" href="#">
           <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-          <span class="cta__label" data-bind="topbar.cta_primary">InMail</span>
+          <span class="cta__label" data-bind="topbar.cta_primary">Perfil</span>
         </a>
-        <a class="cta cta--secondary" data-cta="whatsapp" target="_blank" rel="noopener" href="#">
+        <a class="cta cta--secondary" data-cta="inmail" target="_blank" rel="noopener" href="#">
+          <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          <span class="cta__label" data-bind="topbar.cta_inmail">InMail</span>
+        </a>
+        <a class="cta cta--secondary cta--icon" data-cta="repo" target="_blank" rel="noopener" href="#" aria-label="GitHub">
+          <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+        </a>
+        <a class="cta cta--secondary cta--icon" data-cta="whatsapp" target="_blank" rel="noopener" href="#" aria-label="WhatsApp">
           <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.88a9.85 9.85 0 0 0-2.9-7 9.81 9.81 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.88 0 2.28.67 3.98 1.79 5.76l-1 3.65 3.65-1.1zm11.4-5.46c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42z"/></svg>
-          <span class="cta__label" data-bind="topbar.cta_secondary">WhatsApp</span>
         </a>
       </div>
     </div>
@@ -72,34 +79,62 @@
 
   <main>
     <!-- ====================== Hero ====================== -->
-    <section class="hero" id="s-hero" aria-labelledby="hero-name">
+    <section class="hero" id="s-hero" data-screen-label="Hero" aria-labelledby="hero-name">
       <div class="hero__aurora" aria-hidden="true"></div>
       <div class="container">
         <span class="hero__eyebrow reveal"><span class="dot"></span><span data-bind="hero.kicker"></span></span>
-        <h1 class="hero__name" id="hero-name" data-typewriter><span class="type-text"></span><span class="type-caret" aria-hidden="true">&nbsp;</span></h1>
+        <h1 class="hero__name" id="hero-name" data-bind="hero.name">Victor Seliger</h1>
         <p class="hero__role reveal" data-delay="1" data-bind="hero.role"></p>
         <p class="hero__promise reveal" data-delay="2">
-          <span class="line-1" data-bind="hero.promise_line1"></span>
-          <span class="line-2" data-bind="hero.promise_line2"></span>
+          <span class="hero__promise-clock" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="10" y1="2" x2="14" y2="2"></line>
+              <circle cx="12" cy="13" r="8"></circle>
+              <line class="hero__promise-hand" x1="12" y1="13" x2="12" y2="8.5"></line>
+            </svg>
+          </span>
+          <span data-bind="hero.promise"></span>
         </p>
-        <p class="hero__availability reveal" data-delay="3">
-          <span data-bind="hero.availability_line1"></span>
-          <span data-bind="hero.availability_line2"></span>
-        </p>
+        <dl class="hero__specs reveal" data-delay="3" id="hero-specs"></dl>
         <div class="hero__ctas reveal" data-delay="4">
-          <a class="cta cta--primary" data-cta="inmail" target="_blank" rel="noopener" href="#">
+          <a class="cta cta--primary" data-cta="linkedin" target="_blank" rel="noopener" href="#">
             <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-            <span class="cta__label" data-bind="hero.cta_primary_label"></span>
+            <span class="cta__label" data-bind="hero.cta_primary"></span>
           </a>
           <a class="cta cta--secondary" data-cta="whatsapp" target="_blank" rel="noopener" href="#">
             <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.88a9.85 9.85 0 0 0-2.9-7 9.81 9.81 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.88 0 2.28.67 3.98 1.79 5.76l-1 3.65 3.65-1.1zm11.4-5.46c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42z"/></svg>
-            <span class="cta__label" data-bind="hero.cta_secondary_label"></span>
+            <span class="cta__label" data-bind="hero.cta_secondary"></span>
           </a>
         </div>
+        <p class="hero__fastcue reveal" data-delay="4">
+          <span class="arrow" aria-hidden="true">↓</span>
+          <span><a href="#s-snapshot" data-bind="hero.fast_cue"></a></span>
+        </p>
       </div>
-      <div class="hero__scroll-cue" aria-hidden="true">
-        <span>scroll</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </section>
+
+    <!-- ====================== Snapshot (Os 3 minutos) ====================== -->
+    <section class="snapshot" id="s-snapshot" data-screen-label="Resumo" aria-labelledby="snap-headline">
+      <div class="container">
+        <span class="snapshot__label reveal" data-bind="snapshot.label"></span>
+        <h2 class="snapshot__headline reveal" id="snap-headline" data-bind-html="snapshot.headline"></h2>
+        <p class="snapshot__sub reveal" data-delay="1" data-bind-html="snapshot.sub"></p>
+
+        <p class="snapshot__proofs-label reveal" data-bind="snapshot.proofs_label"></p>
+        <div class="snapshot__proofs reveal" data-delay="1" id="snap-proofs"></div>
+
+        <div class="snapshot__looking reveal">
+          <span class="snapshot__looking-label" data-bind="snapshot.looking_label"></span>
+          <span id="snap-roles" style="display:contents"></span>
+        </div>
+
+        <div class="snapshot__foot reveal">
+          <a class="cta cta--primary" data-cta="linkedin" target="_blank" rel="noopener" href="#">
+            <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            <span class="cta__label" data-bind="hero.cta_primary"></span>
+          </a>
+          <span class="snapshot__deepen" data-bind="snapshot.deepen"></span>
+        </div>
       </div>
     </section>
 
@@ -111,13 +146,13 @@
       </div>
     </div>
 
-    <!-- ====================== Sobre mim ====================== -->
-    <section class="section theme-plum" id="s-about" aria-labelledby="about-title">
+    <!-- ====================== Sobre ====================== -->
+    <section class="section theme-plum" id="s-about" data-screen-label="Sobre" aria-labelledby="about-title">
       <div class="section__bignum" aria-hidden="true">01</div>
       <div class="container">
         <h2 class="section__header reveal" id="about-title" data-bind="about.section_title"></h2>
         <div class="about__grid reveal">
-          <div class="portrait" data-tilt>
+          <div class="portrait">
             <div class="portrait__inner">
               <span class="portrait__glow" aria-hidden="true"></span>
               <span class="portrait__ring" aria-hidden="true"></span>
@@ -126,180 +161,198 @@
                    data-bind-alt="about.photo_alt" alt="Victor Seliger" />
             </div>
           </div>
-          <div>
-            <p class="about__identity" data-bind="about.identity_line"></p>
-            <p class="about__family" data-bind="about.family_line"></p>
-            <div class="about__narrative">
-              <p data-bind="about.narrative_p1"></p>
-              <p data-bind="about.narrative_p2"></p>
-              <p data-bind="about.narrative_p3"></p>
+          <div class="about__body">
+            <p class="about__name" id="about-name"></p>
+            <p class="about__where" id="about-where"></p>
+            <p class="about__family" id="about-family"></p>
+            <p class="about__lead" id="about-lead"></p>
+            <p class="about__text" id="about-text"></p>
+            <div class="about__stat reveal">
+              <div class="ring75" id="about-ring">
+                <svg class="ring75__svg" viewBox="0 0 120 120" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#fff" />
+                      <stop offset="55%" stop-color="#a78bff" />
+                      <stop offset="100%" stop-color="#36e0c4" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="ring75__track" cx="60" cy="60" r="52" />
+                  <circle class="ring75__fill" cx="60" cy="60" r="52" />
+                </svg>
+                <span class="ring75__num"><span class="ring75__val"><span id="about-stat-num">75</span><span class="ring75__pct">%</span></span></span>
+              </div>
+              <div class="about__stat-body">
+                <p class="about__stat-lead" id="about-stat-lead"></p>
+                <p class="about__stat-text" id="about-stat-text"></p>
+              </div>
             </div>
-            <div class="about__meta">
-              <div class="about__meta-row">
-                <span class="about__meta-label" data-bind="about.model_label"></span>
-                <span class="about__meta-value" data-bind="about.model_value"></span>
-              </div>
-              <div class="about__meta-row">
-                <span class="about__meta-label" data-bind="about.availability_label"></span>
-                <span class="about__meta-value" data-bind="about.availability_value"></span>
-              </div>
-              <div class="about__meta-row">
-                <span class="about__meta-label" data-bind="about.languages_label"></span>
-                <span class="about__meta-value" data-bind="about.languages_value"></span>
-              </div>
-            </div>
+            <p class="about__bet" id="about-bet"></p>
+            <div class="about__meta" id="about-meta"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ====================== Trajetória ====================== -->
-    <section class="section theme-cream" id="s-traj" aria-labelledby="trajectory-title">
+    <!-- ====================== Trajetória (timeline) ====================== -->
+    <section class="section theme-graphite" id="s-traj" data-screen-label="Trajetória" aria-labelledby="trajectory-title">
       <div class="section__bignum" aria-hidden="true">02</div>
       <div class="container">
         <h2 class="section__header reveal" id="trajectory-title" data-bind="trajectory.section_title"></h2>
-        <div class="reveal" id="trajectory-list" data-trajectory></div>
+        <p class="traj-hint reveal" data-bind="trajectory.hint"></p>
+        <div class="timeline reveal" id="v2-timeline"></div>
       </div>
     </section>
 
-    <!-- ====================== O que faço ====================== -->
-    <section class="section theme-graphite" id="s-what" aria-labelledby="what-title">
+    <!-- ====================== IA ====================== -->
+    <section class="section theme-indigo" id="s-ai" data-screen-label="IA" aria-labelledby="ai-title">
       <div class="section__bignum" aria-hidden="true">03</div>
       <div class="container">
-        <h2 class="section__header reveal" id="what-title" data-bind="what_i_do.section_title"></h2>
-        <p class="what__headline reveal" data-bind="what_i_do.headline"></p>
-        <div class="what__grid">
-          <div class="what__block reveal">
-            <p class="what__block-label" data-bind="what_i_do.expertise_label"></p>
-            <p class="what__block-text" data-bind="what_i_do.expertise_text"></p>
-          </div>
-          <div class="what__block reveal" data-delay="1">
-            <p class="what__block-label" data-bind="what_i_do.edge_label"></p>
-            <p class="what__block-text" data-bind="what_i_do.edge_text"></p>
+        <h2 class="section__header reveal" id="ai-title" data-bind="ai.section_title"></h2>
+        <p class="ai__manifesto reveal" data-bind="ai.manifesto"></p>
+        <ul class="ai-bullets reveal" id="ai-bullets"></ul>
+        <p class="kpi-section-title reveal" data-bind="ai.kpi_label"></p>
+        <div class="kpi-grid reveal" id="kpi-grid"></div>
+        <div class="proof proof--hero reveal">
+          <span class="proof__beacon" aria-hidden="true"></span>
+          <div>
+            <p class="proof__label" data-bind="ai.proof_label"></p>
+            <p class="proof__text" data-bind="ai.proof_text"></p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ====================== Como me destaco com IA ====================== -->
-    <section class="section theme-indigo" id="s-ai" aria-labelledby="ai-title">
+    <!-- ====================== Stack ====================== -->
+    <section class="section theme-cream" id="s-stack" data-screen-label="Stack" aria-labelledby="stack-title">
       <div class="section__bignum" aria-hidden="true">04</div>
       <div class="container">
-        <h2 class="section__header reveal" id="ai-title" data-bind="ai_section.section_title"></h2>
-        <p class="ai__manifesto reveal" data-bind="ai_section.manifesto"></p>
-        <ul class="ai-bullets reveal" id="ai-bullets"></ul>
-        <p class="kpi-section-title reveal" data-bind="ai_section.kpi_section_title"></p>
-        <div class="kpi-grid reveal" id="kpi-grid"></div>
-        <div class="proof reveal">
-          <p class="proof__label" data-bind="ai_section.proof_label"></p>
-          <p class="proof__text" data-bind="ai_section.proof_text"></p>
-        </div>
+        <h2 class="section__header reveal" id="stack-title" data-bind="stack.section_title"></h2>
+        <p class="traj-hint reveal" data-bind="stack.hint"></p>
+        <div class="accordion reveal" id="stack-list"></div>
       </div>
     </section>
 
-    <!-- ====================== Stack técnica e soft skills ====================== -->
-    <section class="section theme-cream" id="s-stack" aria-labelledby="stack-title">
+    <!-- ====================== Objetivo ====================== -->
+    <section class="section theme-plum" id="s-obj" data-screen-label="Objetivo" aria-labelledby="objective-title">
       <div class="section__bignum" aria-hidden="true">05</div>
       <div class="container">
-        <h2 class="section__header reveal" id="stack-title" data-bind="stack_section.section_title"></h2>
-        <div class="accordion reveal" id="stack-list" data-accordion="stack"></div>
-      </div>
-    </section>
-
-    <!-- ====================== Objetivo de carreira ====================== -->
-    <section class="section theme-plum" id="s-obj" aria-labelledby="objective-title">
-      <div class="section__bignum" aria-hidden="true">06</div>
-      <div class="container">
-        <h2 class="section__header reveal" id="objective-title" data-bind="career_objective.section_title"></h2>
-        <p class="what__headline reveal" data-bind="career_objective.intro"></p>
-        <div class="accordion reveal" id="objective-list" data-accordion="objective"></div>
+        <h2 class="section__header reveal" id="objective-title" data-bind="objective.section_title"></h2>
+        <p class="what__headline reveal" data-bind="objective.intro"></p>
+        <div class="accordion reveal" id="objective-list"></div>
       </div>
     </section>
 
     <!-- ====================== Bloco final (CTA) ====================== -->
-    <section class="final" id="s-final" aria-labelledby="final-p1">
+    <section class="final" id="s-final" data-screen-label="Contato" aria-labelledby="final-q">
       <div class="container">
-        <p class="final__p1 reveal" id="final-p1" data-bind="final_cta.p1"></p>
-        <p class="final__p2 reveal">
-          <span data-bind="final_cta.p2_line1"></span>
-          <span data-bind="final_cta.p2_line2"></span>
-        </p>
-        <p class="final__p3 reveal" data-bind="final_cta.p3"></p>
         <div class="fit reveal" id="fit">
-          <p class="fit__question" data-bind="final_cta.fit_question"></p>
+          <h2 class="fit__question" id="final-q"><span class="fit__typed" id="fit-typed"></span><span class="fit__qmark" id="fit-qmark" aria-hidden="true">?</span><span class="fit__caret" id="fit-caret" aria-hidden="true"></span></h2>
           <div class="fit__choices">
-            <button class="cta cta--primary fit__btn" type="button" data-fit="yes"><span data-bind="final_cta.yes_label"></span></button>
-            <button class="cta cta--secondary fit__btn" type="button" data-fit="no"><span data-bind="final_cta.no_label"></span></button>
+            <button class="cta cta--primary fit__btn fit__btn--yes" type="button" data-fit="yes"><span data-bind="final.yes_label"></span></button>
+            <button class="cta cta--secondary fit__btn fit__btn--no" type="button" data-fit="no"><span data-bind="final.no_label"></span></button>
           </div>
 
           <div class="fit__response" id="fit-yes" hidden>
-            <p class="fit__msg" data-bind="final_cta.yes_response"></p>
+            <p class="fit__msg" id="fit-yes-msg"></p>
             <div class="final__ctas">
-              <div class="final__cta-row">
-                <a class="cta cta--primary" data-cta="inmail" target="_blank" rel="noopener" href="#">
-                  <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-                  <span class="cta__label" data-bind="final_cta.primary_cta.label"></span>
-                </a>
-                <span class="final__cta-sub" data-bind="final_cta.primary_cta.subtext"></span>
+              <div class="final__group">
+                <div class="final__btn-pair">
+                  <a class="cta cta--primary" data-cta="linkedin" target="_blank" rel="noopener" href="#">
+                    <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                    <span class="cta__label" data-bind="final.linkedin_label"></span>
+                  </a>
+                  <a class="cta cta--secondary" data-cta="inmail" target="_blank" rel="noopener" href="#">
+                    <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                    <span class="cta__label" data-bind="final.inmail_label"></span>
+                  </a>
+                </div>
+                <span class="final__cta-sub" data-bind="final.linkedin_sub"></span>
               </div>
-              <div class="final__cta-row">
+              <div class="final__group">
                 <a class="cta cta--secondary" data-cta="whatsapp" target="_blank" rel="noopener" href="#">
                   <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.88a9.85 9.85 0 0 0-2.9-7 9.81 9.81 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.88 0 2.28.67 3.98 1.79 5.76l-1 3.65 3.65-1.1zm11.4-5.46c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42z"/></svg>
-                  <span class="cta__label" data-bind="final_cta.secondary_cta.label"></span>
+                  <span class="cta__label" data-bind="final.whatsapp_label"></span>
                 </a>
-                <span class="final__cta-sub" data-bind="final_cta.secondary_cta.subtext"></span>
+                <span class="final__cta-sub" data-bind="final.whatsapp_sub"></span>
               </div>
             </div>
           </div>
 
           <div class="fit__response" id="fit-no" hidden>
-            <p class="fit__msg" data-bind="final_cta.no_response"></p>
+            <p class="fit__msg" data-bind="final.no_response"></p>
             <div class="final__cta-row">
               <a class="cta cta--primary" data-cta="connect" target="_blank" rel="noopener" href="#">
                 <svg class="cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-                <span class="cta__label" data-bind="final_cta.connect_label"></span>
+                <span class="cta__label" data-bind="final.connect_label"></span>
               </a>
             </div>
           </div>
         </div>
-        <p class="final__signature reveal" data-bind="final_cta.signature"></p>
+        <div class="final__photo reveal">
+          <img src="assets/photo-victor-cut.webp" width="96" height="96" loading="lazy" decoding="async" data-bind-alt="final.photo_alt" alt="Victor Seliger" />
+        </div>
       </div>
     </section>
-
-    <!-- ====================== Skin in the game ====================== -->
-    <section class="section theme-graphite" id="s-skin" aria-labelledby="skin-title">
-      <div class="section__bignum" aria-hidden="true">07</div>
+    <!-- ====================== Bastidores — epílogo (após o Contato) ====================== -->
+    <section class="section theme-graphite" id="s-skin" data-screen-label="Bastidores" aria-labelledby="skin-title">
+      <div class="section__bignum" aria-hidden="true">06</div>
       <div class="container">
         <h2 class="section__header reveal" id="skin-title" data-bind="skin.section_title"></h2>
         <p class="what__headline reveal" data-bind="skin.intro"></p>
-        <div class="skin__grid">
-          <div class="skin__col reveal">
-            <p class="panel__label" data-bind="skin.research_label"></p>
-            <ul class="skin__list" id="skin-research"></ul>
-          </div>
-          <div class="skin__col reveal" data-delay="1">
-            <p class="panel__label" data-bind="skin.answers_label"></p>
-            <ul class="skin__list" id="skin-answers"></ul>
-          </div>
+        <p class="skin__phases-label reveal" data-bind="skin.phases_label"></p>
+        <div class="skin__col reveal">
+          <p class="panel__label" data-bind="skin.research_label"></p>
+          <div class="skin__qa" id="skin-qa"></div>
         </div>
         <div class="skin__arch reveal">
-          <p class="panel__label" data-bind="skin.architecture_label"></p>
+          <p class="panel__label skin__arch-label" data-bind="skin.architecture_label"></p>
           <div id="skin-arch"></div>
         </div>
         <div class="skin__stat reveal">
-          <span class="skin__stat-value" data-bind="skin.stat_value"></span>
-          <span class="skin__stat-label" data-bind="skin.stat_label"></span>
+          <div class="clock" aria-hidden="true">
+            <svg class="clock__svg" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="clockGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff" />
+                  <stop offset="55%" stop-color="#a78bff" />
+                  <stop offset="100%" stop-color="#36e0c4" />
+                </linearGradient>
+              </defs>
+              <circle class="clock__face" cx="50" cy="50" r="46" />
+              <g class="clock__ticks">
+                <line class="major" x1="50" y1="6" x2="50" y2="14" transform="rotate(0 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(30 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(60 50 50)" />
+                <line class="major" x1="50" y1="6" x2="50" y2="14" transform="rotate(90 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(120 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(150 50 50)" />
+                <line class="major" x1="50" y1="6" x2="50" y2="14" transform="rotate(180 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(210 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(240 50 50)" />
+                <line class="major" x1="50" y1="6" x2="50" y2="14" transform="rotate(270 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(300 50 50)" />
+                <line x1="50" y1="7" x2="50" y2="12" transform="rotate(330 50 50)" />
+              </g>
+              <circle class="clock__track" cx="50" cy="50" r="40" />
+              <circle class="clock__progress" cx="50" cy="50" r="40" />
+              <circle class="clock__bead" cx="50" cy="10" r="3.2" />
+              <text class="clock__readout" x="50" y="50" text-anchor="middle" dominant-baseline="central">0:00</text>
+            </svg>
+          </div>
+          <span class="skin__stat-label" data-bind-html="skin.stat_label"></span>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- ====================== Trilha de navegação (dots) ====================== -->
   <nav class="dotnav" aria-label="Navegação por seções">
     <a class="dotnav__item" href="#s-hero" data-spy="s-hero"><span class="dotnav__label" data-bind="nav.start"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
+    <a class="dotnav__item" href="#s-snapshot" data-spy="s-snapshot"><span class="dotnav__label" data-bind="nav.snapshot"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
     <a class="dotnav__item" href="#s-about" data-spy="s-about"><span class="dotnav__label" data-bind="nav.about"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
     <a class="dotnav__item" href="#s-traj" data-spy="s-traj"><span class="dotnav__label" data-bind="nav.traj"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
-    <a class="dotnav__item" href="#s-what" data-spy="s-what"><span class="dotnav__label" data-bind="nav.what"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
     <a class="dotnav__item" href="#s-ai" data-spy="s-ai"><span class="dotnav__label" data-bind="nav.ai"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
     <a class="dotnav__item" href="#s-stack" data-spy="s-stack"><span class="dotnav__label" data-bind="nav.stack"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
     <a class="dotnav__item" href="#s-obj" data-spy="s-obj"><span class="dotnav__label" data-bind="nav.obj"></span><span class="dotnav__dot" aria-hidden="true"></span></a>
@@ -311,19 +364,13 @@
     <div class="container">
       <p data-bind="footer.credits"></p>
       <p>
-        <a data-cta="repo" target="_blank" rel="noopener" href="#" data-bind="footer.repo_link_label"></a>
-        · <span data-bind="footer.site_url"></span>
+        <a data-cta="repo" target="_blank" rel="noopener" href="#" data-bind="footer.repo"></a>
+        · <span data-bind="footer.site"></span>
       </p>
     </div>
   </footer>
 
-  <script defer src="scripts/content.js"></script>
-  <script defer src="scripts/analytics.js"></script>
-  <script defer src="scripts/i18n.js"></script>
-  <script defer src="scripts/accordion.js"></script>
-  <script defer src="scripts/trajectory.js"></script>
-  <script defer src="scripts/effects.js"></script>
-  <script defer src="scripts/scroll.js"></script>
-  <script defer src="scripts/main.js"></script>
+  <script defer src="scripts/v2-content.js"></script>
+  <script defer src="scripts/v2-app.js"></script>
 </body>
 </html>
