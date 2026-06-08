@@ -11,7 +11,7 @@
 (function () {
   "use strict";
 
-  var GA4_ID = "";              // ex.: "G-XXXXXXXXXX" (aguardando)
+  var GA4_ID = "G-GKRF4H8XMZ";   // Google Analytics 4 — ativo
   var CLARITY_ID = "x40wqrc9ye"; // Microsoft Clarity — ativo
 
   var hasGA = /^G-[A-Z0-9]+$/i.test(GA4_ID);
