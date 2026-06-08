@@ -11,8 +11,8 @@
 (function () {
   "use strict";
 
-  var GA4_ID = "";       // ex.: "G-XXXXXXXXXX"
-  var CLARITY_ID = "";   // ex.: "abcd1234ef"
+  var GA4_ID = "";              // ex.: "G-XXXXXXXXXX" (aguardando)
+  var CLARITY_ID = "x40wqrc9ye"; // Microsoft Clarity — ativo
 
   var hasGA = /^G-[A-Z0-9]+$/i.test(GA4_ID);
   var hasClarity = CLARITY_ID && CLARITY_ID.length > 4;
