@@ -6,7 +6,9 @@
 (function () {
   "use strict";
   var CONTENT = window.V2_CONTENT, CFG = window.V2_CONFIG;
-  var lang = (localStorage.getItem("v2_lang") || (navigator.language || "pt").slice(0, 2).toLowerCase());
+  var urlLang = "";
+  try { urlLang = (new URLSearchParams(location.search).get("lang") || "").slice(0, 2).toLowerCase(); } catch (e) {}
+  var lang = (urlLang || localStorage.getItem("v2_lang") || (navigator.language || "pt").slice(0, 2).toLowerCase());
   if (lang !== "en") lang = "pt";
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
