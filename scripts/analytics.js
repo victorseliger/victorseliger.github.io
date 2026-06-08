@@ -128,10 +128,19 @@
     document.head.appendChild(st);
   }
 
+  function detectLang() {
+    // mesma lógica do app: URL > localStorage > <html> > navegador
+    try { var u = new URLSearchParams(location.search).get("lang"); if (u) return u.slice(0, 2).toLowerCase() === "en" ? "en" : "pt"; } catch (e) {}
+    try { var sv = localStorage.getItem("v2_lang"); if (sv) return sv === "en" ? "en" : "pt"; } catch (e) {}
+    var d = (document.documentElement.lang || "").slice(0, 2).toLowerCase();
+    if (d) return d === "en" ? "en" : "pt";
+    return ((navigator.language || "pt").slice(0, 2).toLowerCase() === "en") ? "en" : "pt";
+  }
+
   function showBanner() {
     ready(function () {
       injectStyles();
-      var en = (document.documentElement.lang || "").slice(0, 2).toLowerCase() === "en";
+      var en = detectLang() === "en";
       var txt = en
         ? 'We use analytics cookies (Google Analytics &amp; Microsoft Clarity) to understand how this page is used. Okay?'
         : 'Usamos cookies de analytics (Google Analytics e Microsoft Clarity) para entender como esta página é usada. Tudo bem?';
