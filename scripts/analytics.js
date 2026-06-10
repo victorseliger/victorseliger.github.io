@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  var GA4_ID = "G-GKRF4H8XMZ";   // Google Analytics 4
+  var GA4_ID = "G-5ZFXND6LZF";   // Google Analytics 4
   var CLARITY_ID = "x40wqrc9ye"; // Microsoft Clarity
   var KEY = "lp_consent";        // "granted" | "denied"
 
