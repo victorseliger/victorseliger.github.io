@@ -29,6 +29,8 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag("js", new Date());
+    // idioma (PT/EN) anexado a TODOS os eventos, inclusive page_view → habilita split por idioma
+    try { window.gtag("set", { lang: detectLang() }); } catch (e) {}
     window.gtag("config", GA4_ID, { anonymize_ip: true });
   }
   function loadClarity() {
